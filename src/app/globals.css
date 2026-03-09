@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --color-grey-100: #192434;
+  --color-grey-90: #243244;
+  --color-grey-80: #3D495A;
+  --color-grey-70: #535F6F;
+  --color-grey-60: #6D7885;
+  --color-grey-50: #808A97;
+  --color-grey-40: #99A1AC;
+  --color-grey-30: #BDC2C8;
+  --color-grey-20: #C4C9CE;
+  --color-grey-10: #D2D5D9;
+  --color-grey-00: #DADCDE;
+  --shadow-s: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+}
