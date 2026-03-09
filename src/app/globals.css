@@ -15,3 +15,16 @@
   --color-grey-00: #DADCDE;
   --shadow-s: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
 }
+
+.hover-center-card {
+  transform-origin: center;
+}
+
+.hover-center-card:hover {
+  transform: scale(calc(1 + 4 / 544));
+  /* Increases height by approx 4px */
+  border-color: transparent;
+  background-image: linear-gradient(#FCFDFD, #FCFDFD), linear-gradient(var(--gradient-angle, -126deg), #DADCDE 0%, #FCC378 75%, #FD6253 100%);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
