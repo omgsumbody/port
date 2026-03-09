@@ -40,7 +40,7 @@ export default function MainBodyShowcase() {
         Bottom Cards (The Carousel)
         - Future: Will be horizontally stacked with <motion.div> and paper-crease styling
       */}
-            <div className="flex flex-row items-end justify-center w-full relative h-[152px]">
+            <div className="flex flex-row items-end justify-center w-full relative h-[152px] isolate">
                 {[0, 1, 2, 3, 4, 5].map((index) => {
                     const isActive = index === activeCard;
                     return (
@@ -51,13 +51,27 @@ export default function MainBodyShowcase() {
                                 setIsPaused(true);
                             }}
                             onMouseLeave={() => setIsPaused(false)}
-                            className={`bg-[#FCFDFD] border border-gray-100 rounded-t-[24px] rounded-b-none transition-all duration-300 ease-in-out cursor-pointer flex items-center justify-center shadow-sm relative ${isActive ? "z-10" : "z-0"
+                            className={`bg-[#FCFDFD] border border-gray-100 rounded-t-[24px] rounded-b-none ease-in-out cursor-pointer flex items-center justify-center shadow-sm relative ${isActive ? "z-10" : "z-0"
                                 }`}
                             style={{
+                                transitionProperty: "width, height, margin",
+                                transitionDuration: "300ms",
                                 width: "684px",
                                 height: isActive ? "152px" : "122px",
                                 marginLeft: index === 0 ? "0px" : "-524px", // Overlapping stack horizontally
-                                zIndex: isActive ? 10 : 10 - Math.abs(activeCard - index),
+                                zIndex: (() => {
+                                    if (isActive) return 10;
+                                    // Based on user provided hierarchy
+                                    const hierarchies = {
+                                        0: [10, 9, 8, 7, 6, 5],
+                                        1: [9, 10, 9, 8, 7, 6],
+                                        2: [8, 9, 10, 9, 8, 7],
+                                        3: [7, 8, 9, 10, 9, 8],
+                                        4: [6, 7, 8, 9, 10, 9],
+                                        5: [5, 6, 7, 8, 9, 10]
+                                    };
+                                    return hierarchies[activeCard as keyof typeof hierarchies][index];
+                                })(),
                             }}
                         >
                             <span className={`font-medium ${isActive ? 'text-gray-900' : 'text-gray-400'}`}>
