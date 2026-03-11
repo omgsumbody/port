@@ -2,10 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import CardExpandModal from "./CardExpandModal";
 
 export default function MainBodyShowcase() {
     const [activeCard, setActiveCard] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
+    const [expandedCardIndex, setExpandedCardIndex] = useState<number | null>(null);
 
     const [gradientAngle, setGradientAngle] = useState(-126);
     const [syncTick, setSyncTick] = useState(0);
@@ -67,14 +70,37 @@ export default function MainBodyShowcase() {
             >
                 {/* Background Layer */}
                 <div className="absolute inset-0 z-0 pointer-events-none rounded-[24px] overflow-hidden">
-                    {/* 
-                      When inserting your SVG here:
-                      - Use className="w-full h-full object-cover" (or object-fill if you want it to stretch without maintaining aspect ratio)
-                      - preserveAspectRatio="none" on the SVG tag for absolute stretching.
-                    */}
-                    <div className="w-full h-full bg-gray-50/20 flex items-center justify-center border border-dashed border-gray-200">
-                        <span className="text-gray-300 font-medium">Full Card Background SVG Placeholder</span>
-                    </div>
+                    <AnimatePresence mode="wait">
+                        {activeCard === 0 ? (
+                            <motion.div
+                                key="card-bg-0"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.5 }}
+                                className="absolute inset-0 w-full h-full"
+                            >
+                                <Image
+                                    src="/assets/Landing/cards/card0_bg.svg"
+                                    alt="Background for Card 0"
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                />
+                            </motion.div>
+                        ) : (
+                            <motion.div
+                                key="card-bg-placeholder"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.5 }}
+                                className="absolute inset-0 w-full h-full bg-gray-50/20 flex items-center justify-center border border-dashed border-gray-200"
+                            >
+                                <span className="text-gray-300 font-medium">Card {activeCard} Background</span>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
 
                 {/* Foreground Layer */}
@@ -86,7 +112,10 @@ export default function MainBodyShowcase() {
                     </div>
 
                     {/* Expand Button */}
-                    <div className="absolute top-[46px] right-[46px] w-12 h-12 border border-grey-10 rounded-full flex items-center justify-center cursor-pointer pointer-events-auto bg-white hover:bg-gray-50 transition-colors z-[20]">
+                    <div 
+                        onClick={() => setExpandedCardIndex(activeCard)}
+                        className="absolute top-[46px] right-[46px] w-12 h-12 border border-grey-10 rounded-full flex items-center justify-center cursor-pointer pointer-events-auto bg-white hover:bg-gray-50 transition-colors z-[20]"
+                    >
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-600">
                             <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
                         </svg>
@@ -151,7 +180,32 @@ export default function MainBodyShowcase() {
         - Future: Will be horizontally stacked with <motion.div> and paper-crease styling
       */}
             <div className="flex flex-row items-end justify-center w-full relative h-[152px] isolate">
-                {[0, 1, 2, 3, 4, 5].map((index) => {
+                {[
+                    {
+                        title: "Review Settings",
+                        body: "Dashboard & Review Cycle creation, helping business to empower their performance reviews with modular control."
+                    },
+                    {
+                        title: "Mesh Ai (Maven)",
+                        body: "Improve the quality and tonality of review feedback."
+                    },
+                    {
+                        title: "Views",
+                        body: "Create and save custom analytical views across all Mesh products."
+                    },
+                    {
+                        title: "Reviews Home",
+                        body: "Home for performance, development, calibration & talent decisions."
+                    },
+                    {
+                        title: "Formfilling and Results",
+                        body: "A feedback form which brings data together with continuous OKR check-ins, 1:1s, and previous feedback."
+                    },
+                    {
+                        title: "Rabbit DS",
+                        body: "Design system used by Mesh organization and across all products."
+                    }
+                ].map((cardInfo, index) => {
                     const isActive = index === activeCard;
                     return (
                         <div
@@ -161,7 +215,7 @@ export default function MainBodyShowcase() {
                                 setIsPaused(true);
                             }}
                             onMouseLeave={() => setIsPaused(false)}
-                            className={`bg-[#FCFDFD] border border-grey-00 rounded-t-[24px] rounded-b-none ease-in-out cursor-pointer flex items-center justify-center shadow-sm relative ${isActive ? "z-10" : "z-0"
+                            className={`bg-[#FCFDFD] border border-grey-00 rounded-t-[24px] rounded-b-none ease-in-out cursor-pointer flex items-center justify-center shadow-sm relative overflow-hidden ${isActive ? "z-10" : "z-0"
                                 }`}
                             style={{
                                 transitionProperty: "width, height, margin",
@@ -184,13 +238,63 @@ export default function MainBodyShowcase() {
                                 })(),
                             }}
                         >
-                            <span className={`font-medium ${isActive ? 'text-gray-900' : 'text-gray-400'}`}>
-                                Card Index: {index}
-                            </span>
+                            {/* Text Container (Left Side) */}
+                            <div className="absolute top-[40px] left-[46px] flex flex-col gap-[4px] max-w-[480px] pointer-events-none">
+                                <h3 className="font-inter font-normal text-grey-90 leading-[30px] text-xl">
+                                    {cardInfo.title}
+                                </h3>
+                                <p className="font-inter font-normal text-grey-80 text-sm md:text-base">
+                                    {cardInfo.body}
+                                </p>
+                            </div>
+
+                            {/* Expand Button (Right Side) */}
+                            <div 
+                                onClick={(e) => {
+                                    e.stopPropagation(); // prevent triggering card hover interactions if any
+                                    setExpandedCardIndex(index);
+                                }}
+                                className="absolute top-[52px] right-[52px] w-12 h-12 border border-grey-10 rounded-full flex items-center justify-center pointer-events-auto cursor-pointer bg-white hover:bg-gray-50 transition-colors"
+                            >
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-600">
+                                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                </svg>
+                            </div>
                         </div>
                     );
                 })}
             </div>
+
+            {/* Expanded Modal */}
+            <AnimatePresence>
+                {expandedCardIndex !== null && (
+                    <CardExpandModal 
+                        isOpen={true} 
+                        onClose={() => setExpandedCardIndex(null)}
+                        cardInfo={expandedCardIndex === 0 ? {
+                            title: "Empowering HR with Scalable, Modular Performance Settings",
+                            body: "Replacing a rigid 12-step maze with a bifurcated architecture empowers HR to independently launch customized, scalable performance reviews in minutes without support."
+                        } : {
+                            title: [
+                                "Review Settings",
+                                "Mesh Ai (Maven)",
+                                "Views",
+                                "Reviews Home",
+                                "Formfilling and Results",
+                                "Rabbit DS"
+                            ][expandedCardIndex],
+                            body: [
+                                "Dashboard & Review Cycle creation, helping business to empower their performance reviews with modular control.",
+                                "Improve the quality and tonality of review feedback.",
+                                "Create and save custom analytical views across all Mesh products.",
+                                "Home for performance, development, calibration & talent decisions.",
+                                "A feedback form which brings data together with continuous OKR check-ins, 1:1s, and previous feedback.",
+                                "Design system used by Mesh organization and across all products."
+                            ][expandedCardIndex]
+                        }}
+                    />
+                )}
+            </AnimatePresence>
         </main>
     );
 }
