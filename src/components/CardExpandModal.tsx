@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import Image from 'next/image';
 
 interface CardExpandModalProps {
     isOpen: boolean;
@@ -28,7 +30,7 @@ export default function CardExpandModal({ isOpen, onClose, cardInfo }: CardExpan
     return (
         <div
             onClick={onClose}
-            className="fixed inset-0 z-[100] bg-black/12 overflow-y-auto backdrop-blur-sm pt-[138px] pb-[138px] flex justify-center px-8"
+            className="fixed inset-0 z-[100] overflow-y-auto backdrop-blur-sm pt-[138px] pb-[138px] flex justify-center px-8 bg-[url('/assets/Landing/cards%20exp/modalbg.svg')] bg-cover bg-center bg-fixed"
         >
             {/* Modal Container */}
             <motion.div
@@ -54,27 +56,41 @@ export default function CardExpandModal({ isOpen, onClose, cardInfo }: CardExpan
                 {/* Header Section */}
                 <div className="flex justify-between items-start mb-[48px]">
                     <div className="max-w-[600px]">
-                        <h2 className="font-inter font-medium text-[28px] leading-[46px] text-grey-100 mb-[20px]">
+                        <h2 className="font-inter font-medium text-[32px] leading-[46px] text-grey-100 mb-[20px]">
                             {cardInfo.title}
                         </h2>
-                        <p className="font-inter font-normal text-[16px] leading-[24px] text-grey-80 mb-[32px]">
+                        <p className="max-w-[472px] font-inter font-normal text-[16px] leading-[24px] text-grey-80 mb-[32px]">
                             {cardInfo.body}
                         </p>
                         {/* Sample Buttons aligned horizontally */}
                         <div className="flex gap-4">
-                            <button className="h-[48px] px-6 flex items-center justify-center bg-grey-10 rounded-full font-inter font-regular text-[16px] leading-[24px] text-grey-80 hover:bg-grey-20 transition-colors">
+                            {/* CTA Link to Review Settings */}
+                            <Link 
+                                href="/review-settings" 
+                                className="group h-[48px] px-6 flex items-center justify-center bg-[#990C02] text-white rounded-[12px] font-inter font-regular text-[16px] leading-[24px] hover:bg-[#661900] transition-colors"
+                            >
                                 Read full case study
-                            </button>
-                            <button className="h-[48px] px-6 flex items-center justify-center bg-grey-10 rounded-full font-inter font-regular text-[16px] leading-[24px] text-grey-80 hover:bg-grey-20 transition-colors">
-                                Try it now
-                            </button>
+                                <div className="relative w-[14px] h-[14px] ml-[8px] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-[2px]">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute transition-opacity duration-300 opacity-100 group-hover:opacity-0">
+                                        <path d="M5 3L9 7L5 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                    </svg>
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+                                        <path d="M7 3L11 7L7 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                        <path d="M3 7H10.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                                    </svg>
+                                </div>
+                            </Link>
+                            <div className="h-[48px] px-6 flex items-center justify-center bg-[#FEEBCB] rounded-[52px] font-inter font-regular text-[16px] leading-[24px] text-[#990C02]">
+                                ~ 24 mins read
+                            </div>
                         </div>
                     </div>
 
                     {/* Stats List Text, positioned 120px left from close button right edge */}
                     {/* The close button is right-[48px] + w-[48px] = 96px from the right edge. */}
                     {/* To align 120px left of that (which would be 96+120=216px from the right container edge), we can use an absolute container or let flex handle it width a flexible width. I'm taking off the rigid max-w so the content doesn't truncate, and applying pr-[120px] on the flex element. */}
-                    <div className="flex flex-col gap-[12px] mt-[12px] mr-[72px] min-w-[340px] shrink-0">
+                    {/* The user specifically asked to move statslist 120px to left, changing mr-[72px] to mr-[192px] */}
+                    <div className="flex flex-col gap-[12px] mt-[12px] mr-[192px] min-w-[340px] shrink-0">
                         <div className="flex items-start gap-[6px]">
                             {/* Icon Placeholder */}
                             <div className="w-[18px] h-[18px] bg-gray-200 shrink-0 flex items-center justify-center mt-1">
@@ -118,16 +134,19 @@ export default function CardExpandModal({ isOpen, onClose, cardInfo }: CardExpan
                 {/* Big Box (683x524) on Left, Two Smaller Boxes (683x250) stacked on right with 24px gap */}
                 <div className="flex gap-[24px] mb-[48px]">
                     {/* Big Left Box */}
-                    <div className="w-[683px] h-[524px] bg-red-50 rounded-xl flex items-center justify-center border border-red-100">
-                        <span className="text-red-300 font-medium">Hero Media Main (683x524)</span>
+                    <div className="relative overflow-hidden w-[683px] h-[524px] rounded-xl flex items-center justify-center bg-[url('/assets/Landing/cards%20exp/modalbg.svg')] bg-cover bg-center bg-fixed">
+                        <div className="absolute inset-0 bg-grey-00/[0.18]"></div>
+                        <span className="relative z-10 text-white font-medium">Hero Media Main (683x524)</span>
                     </div>
                     {/* Stacked Right Boxes */}
                     <div className="flex flex-col gap-[24px]">
-                        <div className="w-[683px] h-[250px] bg-red-50 rounded-xl flex items-center justify-center border border-red-100">
-                            <span className="text-red-300 font-medium">Top Right Media (683x250)</span>
+                        <div className="relative overflow-hidden w-[683px] h-[250px] rounded-xl flex items-center justify-center bg-[url('/assets/Landing/cards%20exp/modalbg.svg')] bg-cover bg-center bg-fixed">
+                            <div className="absolute inset-0 bg-grey-00/[0.18]"></div>
+                            <span className="relative z-10 text-white font-medium">Top Right Media (683x250)</span>
                         </div>
-                        <div className="w-[683px] h-[250px] bg-red-50 rounded-xl flex items-center justify-center border border-red-100">
-                            <span className="text-red-300 font-medium">Bottom Right Media (683x250)</span>
+                        <div className="relative overflow-hidden w-[683px] h-[250px] rounded-xl flex items-center justify-center bg-[url('/assets/Landing/cards%20exp/modalbg.svg')] bg-cover bg-center bg-fixed">
+                            <div className="absolute inset-0 bg-grey-00/[0.18]"></div>
+                            <span className="relative z-10 text-white font-medium">Bottom Right Media (683x250)</span>
                         </div>
                     </div>
                 </div>
@@ -175,14 +194,23 @@ export default function CardExpandModal({ isOpen, onClose, cardInfo }: CardExpan
 
                 {/* Features Boxes */}
                 <div className="grid grid-cols-3 gap-[24px] mb-[64px]">
-                    {/* 3 identical feature boxes */}
-                    {[1, 2, 3].map((item) => (
-                        <div key={`feature-${item}`} className="flex flex-col w-full">
-                            <div className="w-full h-[300px] bg-red-50 rounded-xl flex items-center justify-center border border-red-100 mb-[18px]">
-                                <span className="text-red-300 font-medium">Feature Media ({item})</span>
+                    {[
+                        {
+                            text: "Automated Departmental Scaling: Configure a core review template with 'Views' and instantly push localized rules across your entire org chart with zero manual replication.",
+                        },
+                        {
+                            text: "Plug-and-Play Quick Wizard: Launch industry-standard review cycles instantly using data-backed defaults, allowing teams to bypass complex setups and accelerate time-to-value.",
+                        },
+                        {
+                            text: "Conflict-Free Visual Scheduling: Eliminate timeline overlaps and missed deadlines before you launch using an interactive, real-time Gantt verification engine.",
+                        }
+                    ].map((item, index) => (
+                        <div key={`feature-${index}`} className="flex flex-col w-full">
+                            <div className="w-full h-[300px] bg-red-50 rounded-xl flex items-center justify-center border border-red-100 mb-[12px]">
+                                <span className="text-red-300 font-medium">Feature Media ({index + 1})</span>
                             </div>
                             <p className="font-inter font-normal text-[16px] leading-[24px] text-grey-80">
-                                Automated Departmental Scaling: Configure a core review template with 'Views' and instantly push localized rules across your entire org chart with zero manual replication.
+                                {item.text}
                             </p>
                         </div>
                     ))}
@@ -195,8 +223,14 @@ export default function CardExpandModal({ isOpen, onClose, cardInfo }: CardExpan
                 <div className="flex items-center justify-center w-full mb-[74px]">
                     <div className="flex flex-col items-center text-center">
                         {/* Logo Box */}
-                        <div className="w-[176px] h-[48px] bg-gray-100 rounded-lg flex items-center justify-center mb-[32px]">
-                            <span className="text-gray-500 font-bold text-xl">Groww Logo</span>
+                        <div className="mb-[32px] flex items-center justify-center">
+                            <Image 
+                                src="/assets/Landing/cards exp/groww.svg" 
+                                alt="Groww Logo" 
+                                width={106} 
+                                height={29} 
+                                className="object-contain" 
+                            />
                         </div>
 
                         {/* Quote */}
@@ -205,14 +239,26 @@ export default function CardExpandModal({ isOpen, onClose, cardInfo }: CardExpan
                         </blockquote>
 
                         {/* Attribution */}
-                        <p className="font-inter font-normal text-[16px] leading-[24px] text-grey-80 mb-[32px]">
+                        <p className="font-inter font-medium text-[20px] leading-[32px] text-grey-80 mb-[32px]">
                             — Groww (Fast-growing Fintech)
                         </p>
 
                         {/* Action CTA */}
-                        <button className="h-[48px] px-6 flex items-center justify-center bg-red-50 text-red-400 rounded-full font-inter font-medium text-[16px] hover:bg-red-100 transition-colors">
-                            Read this featured story
-                        </button>
+                        <Link 
+                            href="/review-settings" 
+                            className="group flex items-center font-inter font-medium text-[16px] text-[#990C02] hover:text-[#661900] transition-colors"
+                        >
+                            Read the featured story
+                            <div className="relative w-[14px] h-[14px] ml-[8px] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-[2px]">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute transition-opacity duration-300 opacity-100 group-hover:opacity-0">
+                                    <path d="M5 3L9 7L5 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+                                    <path d="M7 3L11 7L7 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                    <path d="M3 7H10.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                                </svg>
+                            </div>
+                        </Link>
                     </div>
                 </div>
 
@@ -220,13 +266,25 @@ export default function CardExpandModal({ isOpen, onClose, cardInfo }: CardExpan
                 <div className="w-full h-[1px] bg-grey-00 mb-[74px]"></div>
 
                 {/* Footer CTA Section */}
-                <div className="flex flex-col items-center justify-center w-full pb-[100px]">
-                    <h2 className="font-inter font-medium text-[48px] leading-[46px] text-grey-100 mb-[40px]">
+                <div className="flex flex-col items-center justify-center w-full pb-[64px]">
+                    <h2 className="font-inter font-medium text-[32px] leading-[40px] text-grey-100 mb-[24px]">
                         Get started with full case study
                     </h2>
-                    <button className="h-[48px] px-8 flex items-center justify-center bg-red-100 text-red-500 rounded-lg font-inter font-medium text-[16px] hover:bg-red-200 transition-colors">
-                        Read full case study
-                    </button>
+                    <Link
+                        href="/review-settings"
+                        className="group h-[48px] px-6 flex items-center justify-center bg-[#990C02] text-white rounded-[12px] font-inter font-medium text-[16px] hover:bg-[#661900] transition-colors"
+                    >
+                        Read now
+                        <div className="relative w-[14px] h-[14px] ml-[8px] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-[2px]">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute transition-opacity duration-300 opacity-100 group-hover:opacity-0">
+                                <path d="M5 3L9 7L5 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+                                <path d="M7 3L11 7L7 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M3 7H10.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                            </svg>
+                        </div>
+                    </Link>
                 </div>
 
             </motion.div>
