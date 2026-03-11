@@ -92,37 +92,25 @@ export default function CardExpandModal({ isOpen, onClose, cardInfo }: CardExpan
                     {/* The user specifically asked to move statslist 120px to left, changing mr-[72px] to mr-[192px] */}
                     <div className="flex flex-col gap-[12px] mt-[12px] mr-[192px] min-w-[340px] shrink-0">
                         <div className="flex items-start gap-[6px]">
-                            {/* Icon Placeholder */}
-                            <div className="w-[18px] h-[18px] bg-gray-200 shrink-0 flex items-center justify-center mt-1">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-500"><circle cx="12" cy="12" r="10" /></svg>
-                            </div>
+                            <Image src="/assets/Landing/cards exp/statlistup.svg" alt="up" width={18} height={18} className="shrink-0 mt-1" />
                             <p className="font-inter font-normal text-[16px] leading-[24px] text-grey-80 break-words">
                                 35% faster creation of review cycles.
                             </p>
                         </div>
                         <div className="flex items-start gap-[6px]">
-                            {/* Icon Placeholder */}
-                            <div className="w-[18px] h-[18px] bg-gray-200 shrink-0 flex items-center justify-center mt-1">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-500"><circle cx="12" cy="12" r="10" /></svg>
-                            </div>
+                            <Image src="/assets/Landing/cards exp/statlistd.svg" alt="down" width={18} height={18} className="shrink-0 mt-1" />
                             <p className="font-inter font-normal text-[16px] leading-[24px] text-grey-80 break-words">
                                 40% reduction in abandonment/drop-off rates.
                             </p>
                         </div>
                         <div className="flex items-start gap-[6px]">
-                            {/* Icon Placeholder */}
-                            <div className="w-[18px] h-[18px] bg-gray-200 shrink-0 flex items-center justify-center mt-1">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-500"><circle cx="12" cy="12" r="10" /></svg>
-                            </div>
+                            <Image src="/assets/Landing/cards exp/statlistup.svg" alt="up" width={18} height={18} className="shrink-0 mt-1" />
                             <p className="font-inter font-normal text-[16px] leading-[24px] text-grey-80 break-words">
                                 17% improvement in qualitative user feedback.
                             </p>
                         </div>
                         <div className="flex items-start gap-[6px]">
-                            {/* Icon Placeholder */}
-                            <div className="w-[18px] h-[18px] bg-gray-200 shrink-0 flex items-center justify-center mt-1">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-500"><circle cx="12" cy="12" r="10" /></svg>
-                            </div>
+                            <Image src="/assets/Landing/cards exp/statlistup.svg" alt="up" width={18} height={18} className="shrink-0 mt-1" />
                             <p className="font-inter font-normal text-[16px] leading-[24px] text-grey-80 break-words">
                                 8% increase in total review cycles created.
                             </p>
