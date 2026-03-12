@@ -2,17 +2,21 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
+
+const PercentageCounter = dynamic(() => import('./PercentageCounter'), { ssr: false });
 
 interface CardExpandModalProps {
     isOpen: boolean;
     onClose: () => void;
+    cardIndex: number;
     cardInfo: {
         title: string;
         body: string;
     };
 }
 
-export default function CardExpandModal({ isOpen, onClose, cardInfo }: CardExpandModalProps) {
+export default function CardExpandModal({ isOpen, onClose, cardIndex, cardInfo }: CardExpandModalProps) {
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
@@ -122,15 +126,38 @@ export default function CardExpandModal({ isOpen, onClose, cardInfo }: CardExpan
                 {/* Big Box (683x524) on Left, Two Smaller Boxes (683x250) stacked on right with 24px gap */}
                 <div className="flex gap-[24px] mb-[48px]">
                     {/* Big Left Box */}
-                    <div className="relative overflow-hidden w-[683px] h-[524px] rounded-xl flex items-center justify-center bg-[url('/assets/Landing/cards%20exp/modalbg.svg')] bg-cover bg-center bg-fixed">
+                    <div className="relative overflow-hidden w-[683px] h-[524px] rounded-xl bg-[url('/assets/Landing/cards%20exp/modalbg.svg')] bg-cover bg-center bg-fixed">
                         <div className="absolute inset-0 bg-grey-00/[0.18]"></div>
-                        <span className="relative z-10 text-white font-medium">Hero Media Main (683x524)</span>
+                        {cardIndex === 0 ? (
+                            <img
+                                src="/assets/Landing/cards exp/card0hm.gif"
+                                alt="Review Settings UI"
+                                style={{
+                                    position: 'absolute',
+                                    inset: 0,
+                                    width: '100%',
+                                    height: '100%',
+                                    objectFit: 'cover',
+                                    objectPosition: 'center',
+                                }}
+                            />
+                        ) : (
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <span className="relative z-10 text-white font-medium">Hero Media Main (683x524)</span>
+                            </div>
+                        )}
                     </div>
                     {/* Stacked Right Boxes */}
                     <div className="flex flex-col gap-[24px]">
                         <div className="relative overflow-hidden w-[683px] h-[250px] rounded-xl flex items-center justify-center bg-[url('/assets/Landing/cards%20exp/modalbg.svg')] bg-cover bg-center bg-fixed">
                             <div className="absolute inset-0 bg-grey-00/[0.18]"></div>
-                            <span className="relative z-10 text-white font-medium">Top Right Media (683x250)</span>
+                            {cardIndex === 0 ? (
+                                <div className="relative z-10">
+                                    <PercentageCounter isOpen={isOpen} />
+                                </div>
+                            ) : (
+                                <span className="relative z-10 text-white font-medium">Top Right Media (683x250)</span>
+                            )}
                         </div>
                         <div className="relative overflow-hidden w-[683px] h-[250px] rounded-xl flex items-center justify-center bg-[url('/assets/Landing/cards%20exp/modalbg.svg')] bg-cover bg-center bg-fixed">
                             <div className="absolute inset-0 bg-grey-00/[0.18]"></div>

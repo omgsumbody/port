@@ -271,6 +271,7 @@ export default function MainBodyShowcase() {
                     <CardExpandModal 
                         isOpen={true} 
                         onClose={() => setExpandedCardIndex(null)}
+                        cardIndex={expandedCardIndex}
                         cardInfo={expandedCardIndex === 0 ? {
                             title: "Empowering HR with Scalable, Modular Performance Settings",
                             body: "Replacing a rigid 12-step maze with a bifurcated architecture empowers HR to independently launch customized, scalable performance reviews in minutes without support."
