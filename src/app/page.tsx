@@ -4,6 +4,7 @@ import TopNavigation from "@/components/TopNavigation";
 import MainBodyShowcase from "@/components/MainBodyShowcase";
 import FooterGraphic from "@/components/FooterGraphic";
 import PixelRevealHero from "@/components/PixelRevealHero";
+import FooterBar from "@/components/FooterBar";
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
             className="w-full h-auto object-contain block"
           />
           <FooterGraphic />
+          <FooterBar />
         </div>
       </footer>
     </div>

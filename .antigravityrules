@@ -1,0 +1,19 @@
+The Next.js & Tailwind Figma Pipeline:
+
+The Trigger: Whenever a Figma link is provided, use the Figma MCP tool to extract the raw node data automatically. Just start building.
+
+Tech Stack & Structure: >    - Translate the Figma data strictly into modern Next.js components using .tsx.
+
+Use Tailwind CSS for all styling.
+
+Map Figma's Auto Layout perfectly to Tailwind's flexbox/grid classes.
+
+Smart Leniency: >    - Automatically add logical Tailwind hover states (e.g., hover:bg-gray-100).
+
+Add standard web transitions using transition-all duration-300 on interactive elements.
+
+Make sure the layout is responsive using Tailwind breakpoints (sm:, md:, lg:).
+
+Animation Rule: Stick strictly to basic CSS hover/focus transitions. Do not generate complex keyframes or SVG animations. Leave the structural SVG files intact so they can be animated manually later.
+
+No Yapping: Output the finalized code, tell me which file was updated, and nothing else.
