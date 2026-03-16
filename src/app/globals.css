@@ -28,3 +28,13 @@
   background-origin: border-box;
   background-clip: padding-box, border-box;
 }
+
+@layer components {
+  .text-body-m {
+    @apply font-sans font-medium text-[16px] leading-[1.8em] text-grey-70;
+  }
+  
+  .text-body-r {
+    @apply font-sans font-normal text-[16px] leading-[1.8em] text-grey-70;
+  }
+}

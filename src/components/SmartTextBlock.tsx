@@ -149,10 +149,10 @@ export const SmartTextBlock: React.FC<SmartTextBlockProps> = ({ originalText, su
       </div>
 
       <div className="mt-[2px]">
-        <p className="font-inter text-[16px] leading-[1.8em] text-grey-100 m-0 whitespace-pre-wrap">
+        <p className="text-body-r m-0 whitespace-pre-wrap">
           {displayedText}
           {showCursor && (
-            <span className="animate-blink font-bold ml-[1px] inline-block font-inter text-grey-100">
+            <span className="animate-blink font-bold ml-[1px] inline-block font-inter text-grey-70">
               |
             </span>
           )}

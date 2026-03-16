@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { NavItem } from '@/components/LeftNavbar';
 import SmartTextBlock from '@/components/SmartTextBlock';
-import { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 const SECTIONS = [
     'Overview',
@@ -104,14 +104,70 @@ export default function ReviewSettings() {
             {/* Main Page Content - sections added here corresponding strictly to nav items */}
             <main className="flex-1 relative">
                 {SECTIONS.map((section) => (
+                    <React.Fragment key={section}>
                     <section 
-                        key={section} 
                         id={section}
-                        className="h-[670px] w-full border border-grey-60 p-[48px] flex flex-col"
+                        className="flex flex-col items-center py-[56px] w-full"
                     >
-                        <h2 className="font-inter font-medium text-[48px] leading-[46px] text-grey-100 mb-[40px]">
-                            {section}
-                        </h2>
+                        <div className="flex flex-col items-start w-full max-w-[960px] gap-[12px]">
+                            {section === 'Overview' ? (
+                                <>
+                                    <h2 className="font-bold text-[24px] tracking-[0.02em] leading-[1.4em] text-grey-90">
+                                        Review settings
+                                    </h2>
+                                    <p className="text-body-m">Helping businesses empower performance reviews with modular settings control and reducing the time to create a performance cycle.</p>
+                                    
+                                    <div className="flex flex-row w-full max-w-[960px] gap-[24px] h-fit">
+                                        {[
+                                            { value: '35%', subtitle: 'Faster creation of review cycles' },
+                                            { value: '17%', subtitle: 'Improved user feedback' },
+                                            { value: '40%', subtitle: 'Reduced abandonment rate' },
+                                            { value: '8%', subtitle: 'More review cycles created' }
+                                        ].map((stat, i) => (
+                                            <div key={i} className="flex-1 flex flex-col h-[132px] rounded-[12px] bg-[#f5f7f9] overflow-hidden border border-[#D9DCDE]/50 shadow-[0px_0px_2px_0px_rgba(217,220,222,0.4)] p-[20px] justify-start items-start gap-[12px]">
+                                                <div className="flex flex-row items-end">
+                                                    <span className="font-inter font-semibold text-grey-50 text-[40px] leading-[1.2em]">
+                                                        {stat.value}
+                                                    </span>
+                                                    <div className="w-[18px] h-[18px] ml-[4px] mb-[4px] bg-grey-20 rounded-full shrink-0"></div>
+                                                </div>
+                                                <div className="font-inter font-normal text-grey-70 text-[14px] tracking-[0.02em] leading-[16px] w-full">
+                                                    {stat.subtitle}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    
+                                    <p className="text-body-r mt-[12px]">
+                                        Reviews & 360s is performance module in Mesh, these settings helps your Head of Resources/HR managers build a comprehensive performance feedback cycle through continuous inputs. Towards the end of December, i redesigned the review cycle creation flow and review settings dashboard.
+                                    </p>
+                                    
+                                    <div className="flex flex-row w-full max-w-[960px] gap-[12px] h-fit mt-[24px]">
+                                        <div className="flex flex-col gap-[8px] w-[333px]">
+                                            <div className="text-body-m">Team</div>
+                                            <div className="text-body-r whitespace-pre-wrap">
+                                                {`6 Developers\n1 Product Leader\n1 Product Designer (Me)`}
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-col gap-[8px] flex-1">
+                                            <div className="text-body-m">Tools</div>
+                                            <div className="text-body-r whitespace-pre-wrap">
+                                                {`Figma\nCoda\nMiro`}
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-col gap-[8px] flex-1">
+                                            <div className="text-body-m">Disciplines</div>
+                                            <div className="text-body-r whitespace-pre-wrap">
+                                                {`Product Strategy\nExperience Research\nInteraction Design`}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </>
+                            ) : (
+                                <h2 className="font-bold text-[24px] tracking-[0.02em] leading-[1.4em] text-grey-90">
+                                    {section}
+                                </h2>
+                            )}
                         {section === 'The Challenge' && (
                             <SmartTextBlock 
                                 originalText={`Say you are a Head of Resources/HR manager trying to create performance review for your organization's employees. Current platform's review cycle creation settings were uncategorized and does not provide the freedom to your HR managers create a cycle according to your organizations philosophy. This was also taking a toll on our CSMs as they need to babysit the cycle creation process every time an organization starts their custom employee performance review.`}
@@ -160,7 +216,12 @@ export default function ReviewSettings() {
                                 summaryText={`I executed a phased rollout under the 2024 three-phase release plan, supported by stakeholder communication, CSM-led onboarding, and dual release paths to safely transition both new and ongoing review cycles by businesses.`}
                             />
                         )}
+                        </div>
                     </section>
+                    
+                    {/* Divider that spans full relative width */}
+                    <div className="w-full h-[1px] bg-[#DADCDE]/28"></div>
+                </React.Fragment>
                 ))}
             </main>
         </div>
