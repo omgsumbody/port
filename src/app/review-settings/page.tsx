@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { NavItem } from '@/components/LeftNavbar';
 import SmartTextBlock from '@/components/SmartTextBlock';
+import ImageTicker from '@/components/ImageTicker';
 import React, { useEffect, useState, useRef } from 'react';
 
 const SECTIONS = [
@@ -169,10 +170,41 @@ export default function ReviewSettings() {
                                 </h2>
                             )}
                         {section === 'The Challenge' && (
-                            <SmartTextBlock 
-                                originalText={`Say you are a Head of Resources/HR manager trying to create performance review for your organization's employees. Current platform's review cycle creation settings were uncategorized and does not provide the freedom to your HR managers create a cycle according to your organizations philosophy. This was also taking a toll on our CSMs as they need to babysit the cycle creation process every time an organization starts their custom employee performance review.`}
-                                summaryText={`The platform's rigid review settings limited HR managers and burdened our CSMs with babysitting custom performance reviews.`}
-                            />
+                            <div className="flex flex-col gap-[24px] w-full mt-[12px]">
+                                <SmartTextBlock 
+                                    originalText={`Say you are a Head of Resources/HR manager trying to create performance review for your organization's employees. Current platform's review cycle creation settings were uncategorized and does not provide the freedom to your HR managers create a cycle according to your organizations philosophy. This was also taking a toll on our CSMs as they need to babysit the cycle creation process every time an organization starts their custom employee performance review.`}
+                                    summaryText={`The platform's rigid review settings limited HR managers and burdened our CSMs with babysitting custom performance reviews.`}
+                                />
+                                <ImageTicker />
+                            </div>
+                        )}
+                        {section === 'Goals' && (
+                            <div className="grid grid-cols-2 gap-[12px] w-full max-w-[960px]">
+                                <div className="flex flex-col h-[126px] p-[16px] justify-start items-start gap-[12px] rounded-[12px] bg-[#f5f7f9] border border-[#D9DCDE]/50 shadow-[0px_0px_2px_0px_rgba(217,220,222,0.4)] overflow-hidden">
+                                    <div className="w-[24px] h-[24px] text-grey-50 shrink-0">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                                    </div>
+                                    <p className="text-body-r">Achieve a creation cycle philosophy catered to every organization needs.</p>
+                                </div>
+                                <div className="flex flex-col h-[126px] p-[16px] justify-start items-start gap-[12px] rounded-[12px] bg-[#f5f7f9] border border-[#D9DCDE]/50 shadow-[0px_0px_2px_0px_rgba(217,220,222,0.4)] overflow-hidden">
+                                    <div className="w-[24px] h-[24px] text-grey-50 shrink-0">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    </div>
+                                    <p className="text-body-r">Categorize and redesign current settings to a plug and play as well as modular control.</p>
+                                </div>
+                                <div className="flex flex-col h-[126px] p-[16px] justify-start items-start gap-[12px] rounded-[12px] bg-[#f5f7f9] border border-[#D9DCDE]/50 shadow-[0px_0px_2px_0px_rgba(217,220,222,0.4)] overflow-hidden">
+                                    <div className="w-[24px] h-[24px] text-grey-50 shrink-0">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                                    </div>
+                                    <p className="text-body-r">Empower HR managers to configure and launch their Review Cycles with greater speed and accuracy.</p>
+                                </div>
+                                <div className="flex flex-col h-[126px] p-[16px] justify-start items-start gap-[12px] rounded-[12px] bg-[#f5f7f9] border border-[#D9DCDE]/50 shadow-[0px_0px_2px_0px_rgba(217,220,222,0.4)] overflow-hidden">
+                                    <div className="w-[24px] h-[24px] text-grey-50 shrink-0">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                                    </div>
+                                    <p className="text-body-r">Significantly reduce user drop-off rates by streamlining the entire Review Cycle creation experience.</p>
+                                </div>
+                            </div>
                         )}
                         {section === 'Kickoff & Early Insights' && (
                             <SmartTextBlock 

@@ -14,6 +14,16 @@
   --color-grey-10: #D2D5D9;
   --color-grey-00: #DADCDE;
   --shadow-s: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+
+  --animate-ticker: scroll 40s linear infinite;
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 9px)); }
+  }
+}
+
+.pause-hover:hover {
+  animation-play-state: paused;
 }
 
 .hover-center-card {
