@@ -9,21 +9,22 @@ import FooterBar from "@/components/FooterBar";
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col font-sans">
-      <header className="sticky top-0 z-50">
+      <header className="sticky top-0 z-[999]">
         <TopNavigation />
       </header>
 
-      <main className="flex-grow">
-        {/* Pixel Reveal Hero */}
+      {/* ─── SECTION 1: HERO ─────────────────────────────────── */}
+      <section aria-label="Hero">
         <PixelRevealHero />
+      </section>
 
-        <section className="main-body w-full py-20 px-[56px]">
-          <MainBodyShowcase />
-        </section>
-      </main>
+      {/* ─── SECTION 2: MAIN BODY (Cards & Interactions) ─────── */}
+      <section aria-label="Main Body" className="w-full" style={{ backgroundColor: "#fffdf6" }}>
+        <MainBodyShowcase />
+      </section>
 
-      <footer className="footer-section w-full bg-[#FFFDF5] flex flex-col items-center">
-        {/* Full-width responsive container for the Footer group */}
+      {/* ─── SECTION 3: FOOTER ───────────────────────────────── */}
+      <footer aria-label="Footer" className="footer-section w-full bg-[#FFFDF5] flex flex-col items-center">
         <div className="w-full max-w-[1920px] mx-auto flex flex-col items-center">
           <img
             src="/footer cid.svg"

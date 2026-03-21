@@ -8,7 +8,11 @@ const BRUSH_RADIUS = 48;        // Mouse reveals squares within this radius
 const FADE_DELAY_MS = 14000;    // Squares start filling back in after 14 seconds
 const FADE_DURATION_MS = 1200;  // Duration for the refill animation per block
 
-export default function PixelRevealHero() {
+interface PixelRevealHeroProps {
+    hideContent?: boolean;
+}
+
+export default function PixelRevealHero({ hideContent = false }: PixelRevealHeroProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -152,7 +156,7 @@ export default function PixelRevealHero() {
         <div
             ref={containerRef}
             onMouseMove={handleMouseMove}
-            className="relative w-full min-h-[calc(100vh-100px)] overflow-hidden grid place-items-center"
+            className={`${hideContent ? "h-full" : "h-[576px]"} w-full flex flex-col items-center justify-center relative overflow-hidden`}
         >
             {/* Layer 0: Gradient background (bottom) */}
             <div
@@ -169,36 +173,38 @@ export default function PixelRevealHero() {
             />
 
             {/* Layer 2: Hero content — stays on top of everything */}
-            <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-5xl px-[56px] py-10 pointer-events-none">
+            {!hideContent && (
+                <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-5xl px-[56px] py-10 pointer-events-none">
 
-                {/* Intro Text */}
-                <p className="text-[16px] font-medium text-[#3D495A] tracking-[0.02em] leading-[16px] font-sans mb-8">
-                    Hello, I'm Harsha! Product Designer and ex frontend developer
-                </p>
+                    {/* Intro Text */}
+                    <p className="text-[16px] font-medium text-[#3D495A] tracking-[0.02em] leading-[16px] font-sans mb-8">
+                        Hello, I&apos;m Harsha! Product Designer and ex frontend developer
+                    </p>
 
-                {/* Main Headline */}
-                <div className="relative mb-8 w-full max-w-[800px] flex justify-center">
-                    <motion.div
-                        initial={{ opacity: 0, x: 20, y: -10, rotate: 10 }}
-                        animate={{ opacity: 1, x: 0, y: 0, rotate: -3 }}
-                        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                        className="absolute top-[-18px] left-[50%] -ml-[140px] md:ml-[0px] md:left-[80px] lg:left-[120px] bg-[#FEF9C3] rounded-2xl px-4 py-1 text-[#64748b] font-medium font-sans text-[20px] z-10"
-                    >
-                        0-10x
-                    </motion.div>
-                    <h1 className="relative text-[40px] font-bold tracking-[-0.02em] leading-[52px] text-[#3D495A] font-sans z-20">
-                        Turning ideas into impactful products from concept to production.
-                    </h1>
+                    {/* Main Headline */}
+                    <div className="relative mb-8 w-full max-w-[800px] flex justify-center">
+                        <motion.div
+                            initial={{ opacity: 0, x: 20, y: -10, rotate: 10 }}
+                            animate={{ opacity: 1, x: 0, y: 0, rotate: -3 }}
+                            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                            className="absolute top-[-18px] left-[50%] -ml-[140px] md:ml-[0px] md:left-[80px] lg:left-[120px] bg-[#FEF9C3] rounded-2xl px-4 py-1 text-[#64748b] font-medium font-sans text-[20px] z-10"
+                        >
+                            0-10x
+                        </motion.div>
+                        <h1 className="relative text-[40px] font-bold tracking-[-0.02em] leading-[52px] text-[#3D495A] font-sans z-20">
+                            Turning ideas into impactful products from concept to production.
+                        </h1>
+                    </div>
+
+                    {/* Narrative Line */}
+                    <p className="text-[16px] font-medium text-[#3D495A] tracking-[0.02em] leading-[16px] font-sans">
+                        Previously at{" "}
+                        <span className="bg-gradient-to-r from-[#C28108] to-[#F05B28] bg-clip-text text-transparent">
+                            Mesh.ai, Hypersonix.ai and Nearbuy
+                        </span>
+                    </p>
                 </div>
-
-                {/* Narrative Line */}
-                <p className="text-[16px] font-medium text-[#3D495A] tracking-[0.02em] leading-[16px] font-sans">
-                    Previously at{" "}
-                    <span className="bg-gradient-to-r from-[#C28108] to-[#F05B28] bg-clip-text text-transparent">
-                        Mesh.ai, Hypersonix.ai and Nearbuy
-                    </span>
-                </p>
-            </div>
+            )}
         </div>
     );
 }

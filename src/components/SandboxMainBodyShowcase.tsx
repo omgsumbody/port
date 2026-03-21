@@ -97,7 +97,7 @@ function TiltedCard({
     );
 }
 
-export default function MainBodyShowcase() {
+export default function SandboxMainBodyShowcase() {
     const [activeCard, setActiveCard] = useState<number | null>(null);
     const [expandedCardIndex, setExpandedCardIndex] = useState<number | null>(null);
     const [gradientAngle, setGradientAngle] = useState(-126);
