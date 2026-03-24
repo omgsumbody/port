@@ -4,6 +4,11 @@ import Link from 'next/link';
 import { NavItem } from '@/components/LeftNavbar';
 import SmartTextBlock from '@/components/SmartTextBlock';
 import ImageTicker from '@/components/ImageTicker';
+import { DraggableFlowchart } from '@/components/DraggableFlowchart';
+import ValidationShowcase from '@/components/ValidationShowcase';
+import { ShowcaseWrapper } from '@/components/ShowcaseWrapper';
+import { Carousel } from '@/components/strategy/Carousel';
+import Impactshowcase from '@/components/Impactshowcase';
 import React, { useEffect, useState, useRef } from 'react';
 
 const SECTIONS = [
@@ -207,16 +212,69 @@ export default function ReviewSettings() {
                             </div>
                         )}
                         {section === 'Kickoff & Early Insights' && (
-                            <SmartTextBlock 
-                                originalText={`I started off with understanding the module by having calls with our PM and reading through the PRD he has prepared for the project. After collecting my thoughts and preparing a initial mind map of my understanding, i went into a demo accounts and started using the existing platform and user testing the flow from different user perspectives to note down the pain points.\n\nEarly insights were, it was painstaking process to create the Review cycle and majority of the settings were incomprehensible for a first time user. My sentiment was to get through to the end of review cycle somehow.`}
-                                summaryText={`I began by aligning with the PM, reviewing the PRD, and mapping my initial understanding before testing the existing flow in demo accounts from multiple user perspectives.\n\nEarly insights showed that the review cycle setup was tedious and unclear, leaving first-time users focused solely on completing the process rather than understanding it.`}
-                            />
+                            <div className="flex flex-col gap-[24px] w-full mt-[12px]">
+                                <SmartTextBlock 
+                                    originalText={`I started off with understanding the module by having calls with our PM and reading through the PRD he has prepared for the project. After collecting my thoughts and preparing a initial mind map of my understanding, i went into a demo accounts and started using the existing platform and user testing the flow from different user perspectives to note down the pain points.\n\nEarly insights were, it was painstaking process to create the Review cycle and majority of the settings were incomprehensible for a first time user. My sentiment was to get through to the end of review cycle somehow.`}
+                                    summaryText={`I began by aligning with the PM, reviewing the PRD, and mapping my initial understanding before testing the existing flow in demo accounts from multiple user perspectives.\n\nEarly insights showed that the review cycle setup was tedious and unclear, leaving first-time users focused solely on completing the process rather than understanding it.`}
+                                />
+                                <DraggableFlowchart />
+                            </div>
                         )}
                         {section === 'Research & Discovery' && (
-                            <SmartTextBlock 
-                                originalText={`Through these i drew similarities between our product and competitors. Thus our product leader and me added new features and grouped our existing settings based on user requirement and priority of sprint release. I leveraged Ai to synthesize all user feedback on the Reviews module, strengthening and validating the insights we had already developed.\n\nLater calls were done with CEO and Co-founder (People Science Leader) for understanding the business acumen of Reviews and how business think for desirability of the product. After this we went on multiple user interviews with CSMs for understanding the various end-users mentality and business philosophy by which their Review Cycles were created. User interviews were also conducted with multiple HR leaders in presence of Product Leader and GTM head.`}
-                                summaryText={`I collaborated with leadership and leveraged AI to analyze competitor and user data, directly shaping new features and prioritizing sprint releases based on deep end-user and business insights.`}
-                            />
+                            <div className="flex flex-col gap-[24px] w-full mt-[12px]">
+                                {/* Competitive Research Banner */}
+                                <div className="w-full max-w-[960px] flex flex-row items-center p-[16px] gap-[32px] bg-[#F5F7F9]/40 border border-[#DADCDE]/60 shadow-[0_0_4px_rgba(218,220,222,0.2)] rounded-[12px] box-border mb-8">
+                                    
+                                    {/* Left Side: Text */}
+                                    <p className="w-[448px] font-inter font-normal text-[16px] leading-[26px] text-[#535F6F] m-0 flex-1">
+                                        Thorough competitive research is done on how other companies are setting a industry standard.
+                                    </p>
+                                    
+                                    {/* Right Side: Logos */}
+                                    <div className="w-[448px] flex flex-row justify-between items-center gap-[11px] flex-1">
+                                        <img src="/assets/Review settings/lattice.svg" alt="Lattice" className="w-[130px] h-[38px] object-contain" />
+                                        <img src="/assets/Review settings/15five.svg" alt="15Five" className="w-[130px] h-[38px] object-contain" />
+                                        <img src="/assets/Review settings/leapsome.svg" alt="Leapsome" className="w-[130px] h-[38px] object-contain" />
+                                    </div>
+
+                                </div>
+                                <SmartTextBlock 
+                                    originalText={`Through these i drew similarities between our product and competitors. Thus our product leader and me added new features and grouped our existing settings based on user requirement and priority of sprint release. I leveraged Ai to synthesize all user feedback on the Reviews module, strengthening and validating the insights we had already developed.\n\nLater calls were done with CEO and Co-founder (People Science Leader) for understanding the business acumen of Reviews and how business think for desirability of the product. After this we went on multiple user interviews with CSMs for understanding the various end-users mentality and business philosophy by which their Review Cycles were created. User interviews were also conducted with multiple HR leaders in presence of Product Leader and GTM head.`}
+                                    summaryText={`I collaborated with leadership and leveraged AI to analyze competitor and user data, directly shaping new features and prioritizing sprint releases based on deep end-user and business insights.`}
+                                />
+                                {/* Research Screenshots */}
+                                <div className="w-full max-w-[960px] flex flex-row items-center pt-[24px] gap-[24px]">
+                                    
+                                    {/* Screenshot 1 (rd-2) */}
+                                    <img 
+                                        src="/assets/Review settings/rd-2.png" 
+                                        alt="Competitive Research Screenshot 2" 
+                                        className="flex-1 w-full max-w-[468px] h-[242px] object-cover rounded-[8px] border border-[#DADCDE]/60 shadow-[0_0_4px_rgba(218,220,222,0.2)]" 
+                                    />
+                                    
+                                    {/* Screenshot 2 (rd-1) */}
+                                    <img 
+                                        src="/assets/Review settings/rd-1.png" 
+                                        alt="Competitive Research Screenshot 1" 
+                                        className="flex-1 w-full max-w-[468px] h-[242px] object-cover rounded-[8px] border border-[#DADCDE]/60 shadow-[0_0_4px_rgba(218,220,222,0.2)]" 
+                                    />
+
+                                </div>
+                            </div>
+                        )}
+                        {section === 'Strategy' && (
+                            <div className="flex flex-col w-full mt-[12px] gap-[24px]">
+                                <ShowcaseWrapper legendTitle="understanding businesses">
+                                    <Carousel images={[
+                                        '/assets/Review settings/strategy1.png', 
+                                        '/assets/Review settings/strategy2.png', 
+                                        '/assets/Review settings/strategy3.png', 
+                                        '/assets/Review settings/strategy4.png', 
+                                        '/assets/Review settings/strategy5.png'
+                                    ]} />
+                                </ShowcaseWrapper>
+                                <ValidationShowcase />
+                            </div>
                         )}
                         {section === 'Proposed Solutions & MVPs' && (
                             <SmartTextBlock 
@@ -225,7 +283,68 @@ export default function ReviewSettings() {
                             />
                         )}
                         {section === 'Design & Iteration' && (
-                            <div className="flex flex-col gap-8 w-full">
+                            <div className="flex flex-col gap-8 w-full mt-[12px]">
+                                <ShowcaseWrapper legendTitle="design & iteration">
+                                    <Carousel 
+                                        images={[
+                                            '/assets/Review settings/DC1.png', 
+                                            '/assets/Review settings/DC2.png', 
+                                            '/assets/Review settings/DC3.png', 
+                                            '/assets/Review settings/DC4.png', 
+                                            '/assets/Review settings/DC5.png'
+                                        ]} 
+                                        className="h-auto"
+                                        imageClassName="w-full h-auto"
+                                    />
+                                </ShowcaseWrapper>
+                                <ShowcaseWrapper legendTitle="Wireframes wrt. multiple Journey Flows">
+                                    {/* The 2-column container */}
+                                    <div className="w-full h-[364px] flex flex-row gap-[12px] overflow-hidden">
+                                        
+                                        {/* Left Column Ticker */}
+                                        <div className="flex-1 h-full overflow-hidden relative">
+                                            <div className="flex flex-col gap-[12px] animate-ticker-vertical">
+                                                {[
+                                                    '/assets/Review settings/dcleft1.png',
+                                                    '/assets/Review settings/dcleft2.png',
+                                                    '/assets/Review settings/dcleft3.png',
+                                                    '/assets/Review settings/dcleft4.png',
+                                                    '/assets/Review settings/dcleft5.png',
+                                                    '/assets/Review settings/dcleft1.png',
+                                                    '/assets/Review settings/dcleft2.png',
+                                                    '/assets/Review settings/dcleft3.png',
+                                                    '/assets/Review settings/dcleft4.png',
+                                                    '/assets/Review settings/dcleft5.png',
+                                                ].map((src, i) => (
+                                                    // eslint-disable-next-line @next/next/no-img-element
+                                                    <img key={i} src={src} alt={`Left wireframe ${i}`} className="w-full h-auto object-contain rounded-[8px]" />
+                                                ))}
+                                            </div>
+                                        </div>
+
+                                        {/* Right Column Ticker */}
+                                        <div className="flex-1 h-full overflow-hidden relative">
+                                            <div className="flex flex-col gap-[12px] animate-ticker-vertical">
+                                                {[
+                                                    '/assets/Review settings/dcright1.png',
+                                                    '/assets/Review settings/dcright2.png',
+                                                    '/assets/Review settings/dcright3.png',
+                                                    '/assets/Review settings/dcright4.png',
+                                                    '/assets/Review settings/dcright5.png',
+                                                    '/assets/Review settings/dcright1.png',
+                                                    '/assets/Review settings/dcright2.png',
+                                                    '/assets/Review settings/dcright3.png',
+                                                    '/assets/Review settings/dcright4.png',
+                                                    '/assets/Review settings/dcright5.png',
+                                                ].map((src, i) => (
+                                                    // eslint-disable-next-line @next/next/no-img-element
+                                                    <img key={i} src={src} alt={`Right wireframe ${i}`} className="w-full h-auto object-contain rounded-[8px]" />
+                                                ))}
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </ShowcaseWrapper>
                                 <SmartTextBlock 
                                     originalText={`Later I had multiple syncs with Founders, Design, Product, and Tech Leaders to finalize and start ahead with high-fidelity flows.\nFounders sync came to an end with deciding a flow.\nProduct Leaders sync was conducted to notify the changes being made to the current product, which would affect their respective modules. After getting a green light from all Product Leaders and accommodating their requests, I moved on to sync with Tech Leaders.\nIn sync with the Tech Lead, it was discovered that time to release would significantly decrease if we move the conversational search to UX debt and pick up the project when feasible.`}
                                     summaryText={`I aligned with Founders, Design, Product, and Tech leaders to finalize high-fidelity flows, secure cross-module approval, and optimize time to release by deferring conversational search as UX debt.`}
@@ -234,6 +353,23 @@ export default function ReviewSettings() {
                                     originalText={`A plug-and-play methodology which is used by medium to small scale companies, here we gathered data from multiple review cycles created from our customer base. We optimized the gathered data to fit most-to-least used setting options depending on the frequency of reviews conducted.\n\nThus, an optimized set of settings was born which were already pre-filled. A whopping twelve-page process with ginormous effort was reduced to four pages.`}
                                     summaryText={`I designed a plug-and-play review cycle creation model for small and mid-sized companies by optimizing real customer data into prefilled, frequency-based settings, reducing a twelve-page flow to four pages.`}
                                 />
+                                <div className="flex flex-col gap-[12px] w-full max-w-[960px]">
+                                    <p className="text-body-r">HR managers can set-up the frequency, duration and Type of review in first page of modular settings.</p>
+                                    <p className="text-body-r">Reviewees page helps HR managers to set-up the employees who will receive the current created Review Cycle. This page also helps you add a set of employees through pre created Views or create a new view.</p>
+                                    <p className="text-body-r">For large scale companies which already had a set philosophy in place and had been using this for years, we had a integrated flow to configure each modular setting wrt to each employee or set of employees using Views.</p>
+                                    <p className="text-body-r">A HR manager typically adds the type of reviewers this page and depending on the modifications, HR manager might need to set range of peers required. I also added ability to add different type of peers.</p>
+                                    <p className="text-body-r">This was solved by adding Ai recommended templates for ease of use, adding the context for each templates and letting the HR manager preview the template.</p>
+                                    <p className="text-body-r">HR Manager could also configure their Scoring philosophy as they desire.</p>
+                                    <p className="text-body-r">Calibration and Score settings are integrated into each review cycle. Earlier there was no feasibility to configure for each review cycle. By integrating this into review cycles, analytics in Review Home are also made legible. To know more how this was solved read about Reviews Home.</p>
+                                    <p className="text-body-r">This story is featured on Mesh Studio. To know more about performance 9-box grid follow the featured story.</p>
+                                    <p className="text-body-r">Created by McKinsey to identify key investment opportunities and compare different business units, the talent assessment grid has since become a staple in talent reviews and succession planning across the globe.</p>
+                                    <p className="text-body-r">HR Managers can directly skip to this page with pre-configured settings designed for mid and small scale companies or add their own philosophy to configure.</p>
+                                    <p className="text-body-r">Timelines are added as way to visualize the entire Review Cycle on a Gantt Chart and share the same with their stakeholders to discuss and finalize the launch.</p>
+                                    <p className="text-body-r">Validations and HR Manager acknowledgement is required for edge case employees who are either missing Goals, Managers or Grades. In most established companies these cases are negligible.</p>
+                                    <p className="text-body-r">A final summary is given out with all the settings HR managers can either save as draft or launch the Review Cycle right away.</p>
+                                    <p className="text-body-r">Review Settings Dashboard</p>
+                                    <p className="text-body-r">Iterations</p>
+                                </div>
                             </div>
                         )}
                         {section === 'Development & Implementation' && (
@@ -247,6 +383,9 @@ export default function ReviewSettings() {
                                 originalText={`We had a three-phase release plan set up at the start of the 2024 calendar year. This project was released into phase 2 of releases. A newsletter release was set up with all the new changes and how this project would affect the existing/on-going review cycles of the business.\nCSMs also held their new experience onboarding calls with HR managers of most businesses.\nWith this, there were two instances of release created for businesses: one without any on-going review cycles and one with on-going review cycles. Once a green light was given from businesses with on-going review cycles, a second-phase release was made.`}
                                 summaryText={`I executed a phased rollout under the 2024 three-phase release plan, supported by stakeholder communication, CSM-led onboarding, and dual release paths to safely transition both new and ongoing review cycles by businesses.`}
                             />
+                        )}
+                        {section === 'Impact & Metrics' && (
+                            <Impactshowcase />
                         )}
                         </div>
                     </section>

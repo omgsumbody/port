@@ -20,6 +20,12 @@
     0% { transform: translateX(0); }
     100% { transform: translateX(calc(-50% - 9px)); }
   }
+
+  --animate-ticker-vertical: scroll-y 20s linear infinite;
+  @keyframes scroll-y {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+  }
 }
 
 .pause-hover:hover {
@@ -46,5 +52,16 @@
   
   .text-body-r {
     @apply font-sans font-normal text-[16px] leading-[1.8em] text-grey-70;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
 }
