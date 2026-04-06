@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 
@@ -17,6 +17,16 @@ interface CardExpandModalProps {
 }
 
 export default function CardExpandModal({ isOpen, onClose, cardIndex, cardInfo }: CardExpandModalProps) {
+    const router = useRouter();
+
+    const handleNavigate = () => {
+        onClose(); // trigger modal exit animation
+        setTimeout(() => {
+            document.body.style.overflow = 'auto'; // safety unlock
+            router.push('/review-settings');
+        }, 300); // wait for modal exit animation (0.4s transition, 300ms is enough)
+    };
+
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
@@ -68,9 +78,9 @@ export default function CardExpandModal({ isOpen, onClose, cardIndex, cardInfo }
                         </p>
                         {/* Sample Buttons aligned horizontally */}
                         <div className="flex gap-4">
-                            {/* CTA Link to Review Settings */}
-                            <Link 
-                                href="/review-settings" 
+                            {/* CTA Button to Review Settings */}
+                            <button
+                                onClick={handleNavigate}
                                 className="group h-[48px] px-6 flex items-center justify-center bg-[#990C02] text-white rounded-[12px] font-inter font-regular text-[16px] leading-[24px] hover:bg-[#661900] transition-colors"
                             >
                                 Read full case study
@@ -83,7 +93,7 @@ export default function CardExpandModal({ isOpen, onClose, cardIndex, cardInfo }
                                         <path d="M3 7H10.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                                     </svg>
                                 </div>
-                            </Link>
+                            </button>
                             <div className="h-[48px] px-6 flex items-center justify-center bg-[#FEEBCB] rounded-[52px] font-inter font-regular text-[16px] leading-[24px] text-[#990C02]">
                                 ~ 24 mins read
                             </div>
@@ -259,8 +269,8 @@ export default function CardExpandModal({ isOpen, onClose, cardIndex, cardInfo }
                         </p>
 
                         {/* Action CTA */}
-                        <Link 
-                            href="/review-settings" 
+                        <button
+                            onClick={handleNavigate}
                             className="group flex items-center font-inter font-medium text-[16px] text-[#990C02] hover:text-[#661900] transition-colors"
                         >
                             Read the featured story
@@ -273,7 +283,7 @@ export default function CardExpandModal({ isOpen, onClose, cardIndex, cardInfo }
                                     <path d="M3 7H10.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                             </div>
-                        </Link>
+                        </button>
                     </div>
                 </div>
 
@@ -285,8 +295,8 @@ export default function CardExpandModal({ isOpen, onClose, cardIndex, cardInfo }
                     <h2 className="font-inter font-medium text-[32px] leading-[40px] text-grey-100 mb-[24px]">
                         Get started with full case study
                     </h2>
-                    <Link
-                        href="/review-settings"
+                    <button
+                        onClick={handleNavigate}
                         className="group h-[48px] px-6 flex items-center justify-center bg-[#990C02] text-white rounded-[12px] font-inter font-medium text-[16px] hover:bg-[#661900] transition-colors"
                     >
                         Read now
@@ -299,7 +309,7 @@ export default function CardExpandModal({ isOpen, onClose, cardIndex, cardInfo }
                                 <path d="M3 7H10.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                             </svg>
                         </div>
-                    </Link>
+                    </button>
                 </div>
 
             </motion.div>

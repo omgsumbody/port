@@ -9,6 +9,12 @@ import ValidationShowcase from '@/components/ValidationShowcase';
 import { ShowcaseWrapper } from '@/components/ShowcaseWrapper';
 import { Carousel } from '@/components/strategy/Carousel';
 import Impactshowcase from '@/components/Impactshowcase';
+import ImpactshowcaseFeature from '@/components/ImpactshowcaseFeature';
+import ImpactshowcaseStep from '@/components/ImpactshowcaseStep';
+import ChallengesLearnings from '@/components/ChallengesLearnings';
+import Footergraphic from '@/components/FooterGraphic';
+import SectionTitle from '@/components/SectionTitle';
+import ImageShowcase from '@/components/ImageShowcase';
 import React, { useEffect, useState, useRef } from 'react';
 
 const SECTIONS = [
@@ -108,7 +114,7 @@ export default function ReviewSettings() {
             </aside>
 
             {/* Main Page Content - sections added here corresponding strictly to nav items */}
-            <main className="flex-1 relative">
+            <main className="flex-1 relative overflow-x-hidden">
                 {SECTIONS.map((section) => (
                     <React.Fragment key={section}>
                     <section 
@@ -118,9 +124,7 @@ export default function ReviewSettings() {
                         <div className="flex flex-col items-start w-full max-w-[960px] gap-[12px]">
                             {section === 'Overview' ? (
                                 <>
-                                    <h2 className="font-bold text-[24px] tracking-[0.02em] leading-[1.4em] text-grey-90">
-                                        Review settings
-                                    </h2>
+                                    <SectionTitle title="Review Settings" />
                                     <p className="text-body-m">Helping businesses empower performance reviews with modular settings control and reducing the time to create a performance cycle.</p>
                                     
                                     <div className="flex flex-row w-full max-w-[960px] gap-[24px] h-fit">
@@ -170,9 +174,7 @@ export default function ReviewSettings() {
                                     </div>
                                 </>
                             ) : (
-                                <h2 className="font-bold text-[24px] tracking-[0.02em] leading-[1.4em] text-grey-90">
-                                    {section}
-                                </h2>
+                                <SectionTitle title={section} />
                             )}
                         {section === 'The Challenge' && (
                             <div className="flex flex-col gap-[24px] w-full mt-[12px]">
@@ -264,6 +266,28 @@ export default function ReviewSettings() {
                         )}
                         {section === 'Strategy' && (
                             <div className="flex flex-col w-full mt-[12px] gap-[24px]">
+
+                                {/* Business Level Problems */}
+                                <div className="w-full max-w-[960px] flex flex-col items-start gap-[6px] mx-auto mt-8 mb-8">
+                                    <h4 className="font-inter font-medium text-[16px] leading-[29px] text-[#3D495A] m-0">
+                                        Business level problems
+                                    </h4>
+                                    <ul className="w-full flex flex-col items-start gap-[10px] list-disc pl-5 m-0">
+                                        <li className="w-full font-inter font-normal text-[16px] leading-[24px] text-[#535F6F]">
+                                            Businesses want to different set of employees to have a different type of review in same review cycle. Currently, this was achieved by creating multiple cycles for the same time period.
+                                        </li>
+                                        <li className="w-full font-inter font-normal text-[16px] leading-[24px] text-[#535F6F]">
+                                            Calibration and score settings are currently applied on an overall scale, which needs to made modular specific to Review Cycle as well as different set of employees.
+                                        </li>
+                                        <li className="w-full font-inter font-normal text-[16px] leading-[24px] text-[#535F6F]">
+                                            Lack of understanding and discovery of most settings.
+                                        </li>
+                                        <li className="w-full font-inter font-normal text-[16px] leading-[24px] text-[#535F6F]">
+                                            Adding review cycles based on Joining Dates of employees.
+                                        </li>
+                                    </ul>
+                                </div>
+
                                 <ShowcaseWrapper legendTitle="understanding businesses">
                                     <Carousel images={[
                                         '/assets/Review settings/strategy1.png', 
@@ -284,6 +308,7 @@ export default function ReviewSettings() {
                         )}
                         {section === 'Design & Iteration' && (
                             <div className="flex flex-col gap-8 w-full mt-[12px]">
+                                <p className="text-body-r">I made Multiple Journey maps and low level wireframes for the creation flow. Later had multiple syncs with Founders, Product and Tech Leaders.</p>
                                 <ShowcaseWrapper legendTitle="design & iteration">
                                     <Carousel 
                                         images={[
@@ -349,10 +374,48 @@ export default function ReviewSettings() {
                                     originalText={`Later I had multiple syncs with Founders, Design, Product, and Tech Leaders to finalize and start ahead with high-fidelity flows.\nFounders sync came to an end with deciding a flow.\nProduct Leaders sync was conducted to notify the changes being made to the current product, which would affect their respective modules. After getting a green light from all Product Leaders and accommodating their requests, I moved on to sync with Tech Leaders.\nIn sync with the Tech Lead, it was discovered that time to release would significantly decrease if we move the conversational search to UX debt and pick up the project when feasible.`}
                                     summaryText={`I aligned with Founders, Design, Product, and Tech leaders to finalize high-fidelity flows, secure cross-module approval, and optimize time to release by deferring conversational search as UX debt.`}
                                 />
-                                <SmartTextBlock 
-                                    originalText={`A plug-and-play methodology which is used by medium to small scale companies, here we gathered data from multiple review cycles created from our customer base. We optimized the gathered data to fit most-to-least used setting options depending on the frequency of reviews conducted.\n\nThus, an optimized set of settings was born which were already pre-filled. A whopping twelve-page process with ginormous effort was reduced to four pages.`}
-                                    summaryText={`I designed a plug-and-play review cycle creation model for small and mid-sized companies by optimizing real customer data into prefilled, frequency-based settings, reducing a twelve-page flow to four pages.`}
-                                />
+                                <div className="flex flex-col">
+                                    <ImageShowcase
+                                        variant="type1"
+                                        texts={['A plug-and-play methodology which is used by medium to small scale companies, here we gathered data from multiple review cycles created from our customer base. We optimized the gathered data to fit most-to-least used setting options depending on the frequency of reviews conducted. Thus, an optimized set of settings was born which were already pre-filled. A whopping twelve-page process with ginormous effort was reduced to four pages.']}
+                                        thumbnailSrc="/assets/Review settings/di1.png"
+                                        fullscreenSrc=""
+                                    />
+                                    <ImageShowcase
+                                        variant="type2"
+                                        texts={['HR managers can set-up the frequency, duration and Type of review in first page of modular settings.']}
+                                        thumbnailSrc="/assets/Review settings/di2.png"
+                                    />
+                                    <ImageShowcase
+                                        variant="type1"
+                                        texts={['Reviewees page helps HR managers to set-up the employees who will receive the current created Review Cycle. This page also helps you add a set of employees through pre created Views or create a new view.', 'For large scale companies which already had a set philosophy in place and had been using this for years, we had a integrated flow to configure each modular setting wrt to each employee or set of employees using Views.']}
+                                        thumbnailSrc="/assets/Review settings/di3.png"
+                                    />
+                                    <ImageShowcase
+                                        variant="type2"
+                                        texts={['Placeholder text for the fourth showcase.']}
+                                    />
+                                    <ImageShowcase
+                                        variant="type1"
+                                        texts={['Placeholder text for the fifth showcase.']}
+                                    />
+                                    <ImageShowcase
+                                        variant="type2"
+                                        texts={['Placeholder text for the sixth showcase.']}
+                                    />
+                                    <ImageShowcase
+                                        variant="type1"
+                                        texts={['Placeholder text for the seventh showcase.']}
+                                    />
+                                    <ImageShowcase
+                                        variant="type2"
+                                        texts={['Placeholder text for the eighth showcase.']}
+                                    />
+                                    <ImageShowcase
+                                        variant="type1"
+                                        texts={['Placeholder text for the ninth showcase.']}
+                                    />
+                                </div>
                                 <div className="flex flex-col gap-[12px] w-full max-w-[960px]">
                                     <p className="text-body-r">HR managers can set-up the frequency, duration and Type of review in first page of modular settings.</p>
                                     <p className="text-body-r">Reviewees page helps HR managers to set-up the employees who will receive the current created Review Cycle. This page also helps you add a set of employees through pre created Views or create a new view.</p>
@@ -385,7 +448,262 @@ export default function ReviewSettings() {
                             />
                         )}
                         {section === 'Impact & Metrics' && (
-                            <Impactshowcase />
+                            <div className="flex flex-col gap-8 w-full items-center">
+                                {/* Metrics Context Block */}
+                                <div className="w-full max-w-[960px] flex flex-col gap-[16px] mb-[32px] mx-auto">
+                                    
+                                    <p className="font-inter font-normal text-[16px] leading-[29px] text-[#3D495A] m-0">
+                                        Success was measured across these metrics:
+                                    </p>
+
+                                    <div className="w-full h-[1px] bg-[#DADCDE]/60"></div>
+
+                                    {/* User Success Metrics */}
+                                    <div className="w-full flex flex-col gap-[16px]">
+                                        <h4 className="font-inter font-medium text-[16px] leading-[29px] text-[#3D495A] m-0">
+                                            User Success Metrics
+                                        </h4>
+                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px]">
+                                            {/* Col 1 */}
+                                            <div className="flex flex-col gap-[12px]">
+                                                <h5 className="font-inter font-normal text-[16px] text-[#3D495A] m-0">Efficiency</h5>
+                                                <div className="border-l-[4px] border-[#DADCDE]/60 rounded-l-[4px] pl-[12px] flex flex-col">
+                                                    <span className="font-inter text-[16px] leading-[29px] text-[#3D495A]">Cycle setup time</span>
+                                                    <span className="font-inter text-[16px] leading-[29px] text-[#3D495A]">Step completion speed</span>
+                                                    <span className="font-inter text-[16px] leading-[29px] text-[#3D495A]">Backtracking frequency</span>
+                                                </div>
+                                            </div>
+                                            {/* Col 2 */}
+                                            <div className="flex flex-col gap-[12px]">
+                                                <h5 className="font-inter font-normal text-[16px] text-[#3D495A] m-0">Effectiveness</h5>
+                                                <div className="border-l-[4px] border-[#DADCDE]/60 rounded-l-[4px] pl-[12px] flex flex-col">
+                                                    <span className="font-inter text-[16px] leading-[29px] text-[#3D495A]">Completion rate</span>
+                                                    <span className="font-inter text-[16px] leading-[29px] text-[#3D495A]">Error frequency</span>
+                                                </div>
+                                            </div>
+                                            {/* Col 3 */}
+                                            <div className="flex flex-col gap-[12px]">
+                                                <h5 className="font-inter font-normal text-[16px] text-[#3D495A] m-0">Confidence</h5>
+                                                <div className="border-l-[4px] border-[#DADCDE]/60 rounded-l-[4px] pl-[12px] flex flex-col">
+                                                    <span className="font-inter text-[16px] leading-[29px] text-[#3D495A]">Post-task clarity</span>
+                                                    <span className="font-inter text-[16px] leading-[29px] text-[#3D495A]">Reduced hesitation</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="w-full h-[1px] bg-[#DADCDE]/60"></div>
+
+                                    {/* Business & Decision Validation */}
+                                    <div className="w-full flex flex-col gap-[16px]">
+                                        <h4 className="font-inter font-medium text-[16px] leading-[29px] text-[#3D495A] m-0">
+                                            Business & Decision Validation
+                                        </h4>
+                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px]">
+                                            {/* Col 1 */}
+                                            <div className="flex flex-col gap-[12px]">
+                                                <h5 className="font-inter font-normal text-[16px] text-[#3D495A] m-0">Adoption</h5>
+                                                <div className="border-l-[4px] border-[#DADCDE]/60 rounded-l-[4px] pl-[12px] flex flex-col">
+                                                    <span className="font-inter text-[16px] leading-[29px] text-[#3D495A]">Views usage</span>
+                                                    <span className="font-inter text-[16px] leading-[29px] text-[#3D495A]">Preconfigured templates usage</span>
+                                                    <span className="font-inter text-[16px] leading-[29px] text-[#3D495A]">Timeline engagement</span>
+                                                </div>
+                                            </div>
+                                            {/* Col 2 */}
+                                            <div className="flex flex-col gap-[12px]">
+                                                <h5 className="font-inter font-normal text-[16px] text-[#3D495A] m-0">Independence</h5>
+                                                <div className="border-l-[4px] border-[#DADCDE]/60 rounded-l-[4px] pl-[12px] flex flex-col">
+                                                    <span className="font-inter text-[16px] leading-[29px] text-[#3D495A]">Reduced CSM intervention</span>
+                                                    <span className="font-inter text-[16px] leading-[29px] text-[#3D495A]">Support ticket volume</span>
+                                                </div>
+                                            </div>
+                                            {/* Col 3 */}
+                                            <div className="flex flex-col gap-[12px]">
+                                                <h5 className="font-inter font-normal text-[16px] text-[#3D495A] m-0">Behavioral Signals</h5>
+                                                <div className="border-l-[4px] border-[#DADCDE]/60 rounded-l-[4px] pl-[12px] flex flex-col">
+                                                    <span className="font-inter text-[16px] leading-[29px] text-[#3D495A]">Preconfigured template overrides</span>
+                                                    <span className="font-inter text-[16px] leading-[29px] text-[#3D495A]">Reconfiguration patterns</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="w-full h-[1px] bg-[#DADCDE]/60"></div>
+
+                                    <p className="font-inter font-normal text-[16px] leading-[29px] text-[#3D495A] m-0">
+                                        Instrumentation events were setup in Mixpanel to measure metrics and validate the decisions.
+                                    </p>
+
+                                </div>
+                                <Impactshowcase />
+                                <ImpactshowcaseFeature />
+                                <ImpactshowcaseStep />
+
+                                {/* Overall Impact Summary Box */}
+                                <div className="w-full max-w-[960px] flex flex-col items-start bg-[rgba(233,255,240,0.57)] border border-[rgba(146,195,162,0.42)] rounded-[12px] mt-12 mx-auto">
+                                    
+                                    {/* Top Data Section */}
+                                    <div className="w-full flex flex-row items-start p-[32px] gap-[47px]">
+                                        
+                                        {/* Column 1 */}
+                                        <div className="flex-1 flex flex-col items-start">
+                                            <div className="flex flex-row items-start gap-[10px] h-[58px]">
+                                                <span className="font-inter italic font-extrabold text-[48px] leading-[58px] text-[#1A5724]">35%</span>
+                                                <div className="w-[24px] h-[24px] shrink-0 pt-[12px]">
+                                                    <img src="/assets/Review settings/ImpctUP.svg" alt="Impact trending up" className="w-full h-full object-contain" />
+                                                </div>
+                                            </div>
+                                            <p className="font-inter font-normal text-[16px] leading-[29px] text-[#535F6F] m-0 w-[152px]">
+                                                Faster creation of review cycles
+                                            </p>
+                                        </div>
+
+                                        {/* Divider */}
+                                        <div className="w-[1px] h-[104px] bg-[rgba(146,195,162,0.3)] shrink-0"></div>
+
+                                        {/* Column 2 */}
+                                        <div className="flex-1 flex flex-col items-start">
+                                            <div className="flex flex-row items-start gap-[10px] h-[58px]">
+                                                <span className="font-inter italic font-extrabold text-[48px] leading-[58px] text-[#1A5724]">17%</span>
+                                                <div className="w-[24px] h-[24px] shrink-0 pt-[12px]">
+                                                    <img src="/assets/Review settings/ImpctUP.svg" alt="Impact trending up" className="w-full h-full object-contain" />
+                                                </div>
+                                            </div>
+                                            <p className="font-inter font-normal text-[16px] leading-[29px] text-[#535F6F] m-0 w-[152px]">
+                                                Improved user feedback
+                                            </p>
+                                        </div>
+
+                                        {/* Divider */}
+                                        <div className="w-[1px] h-[104px] bg-[rgba(146,195,162,0.3)] shrink-0"></div>
+
+                                        {/* Column 3 */}
+                                        <div className="flex-1 flex flex-col items-start">
+                                            <div className="flex flex-row items-start gap-[10px] h-[58px]">
+                                                <span className="font-inter italic font-extrabold text-[48px] leading-[58px] text-[#1A5724]">40%</span>
+                                                <div className="w-[24px] h-[24px] shrink-0 pt-[12px]">
+                                                    <img src="/assets/Review settings/ImpctUP.svg" alt="Impact trending up" className="w-full h-full object-contain" />
+                                                </div>
+                                            </div>
+                                            <p className="font-inter font-normal text-[16px] leading-[29px] text-[#535F6F] m-0 w-[152px]">
+                                                Overall reduced abandonment rate
+                                            </p>
+                                        </div>
+
+                                        {/* Divider */}
+                                        <div className="w-[1px] h-[104px] bg-[rgba(146,195,162,0.3)] shrink-0"></div>
+
+                                        {/* Column 4 */}
+                                        <div className="flex-1 flex flex-col items-start">
+                                            <div className="flex flex-row items-start gap-[10px] h-[58px]">
+                                                <span className="font-inter italic font-extrabold text-[48px] leading-[58px] text-[#1A5724]">8%</span>
+                                                <div className="w-[24px] h-[24px] shrink-0 pt-[12px]">
+                                                    <img src="/assets/Review settings/ImpctUP.svg" alt="Impact trending up" className="w-full h-full object-contain" />
+                                                </div>
+                                            </div>
+                                            <p className="font-inter font-normal text-[16px] leading-[29px] text-[#535F6F] m-0 w-[152px]">
+                                                More review cycles created
+                                            </p>
+                                        </div>
+
+                                    </div>
+
+                                    {/* Bottom Legend Bar */}
+                                    <div className="w-full flex flex-row items-center px-[16px] py-[10px] border-t border-[rgba(146,195,162,0.3)]">
+                                        <p className="font-inter font-normal text-[16px] leading-[29px] text-[#535F6F] m-0">
+                                            Overall impact of Review Settings redesign.
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                                {/* Final Impact Image Ticker */}
+                                <div className="w-full max-w-[960px] mx-auto mt-12 mb-16">
+                                    <ImageTicker 
+                                        images={[
+                                            '/assets/Review settings/ireviw1.png', '/assets/Review settings/ireviw2.png', '/assets/Review settings/ireviw3.png', '/assets/Review settings/ireviw4.png', 
+                                            '/assets/Review settings/ireviw5.png', '/assets/Review settings/ireviw6.png', '/assets/Review settings/ireviw7.png', '/assets/Review settings/ireviw8.png', 
+                                            '/assets/Review settings/ireviw9.png', '/assets/Review settings/ireviw10.png', '/assets/Review settings/ireviw11.png', '/assets/Review settings/ireviw12.png'
+                                        ]}
+                                        className="h-[214px] px-[16px] py-[8px]"
+                                        itemClassName="shrink-0 flex items-center justify-center h-full px-2"
+                                        imageClassName="max-h-[198px] w-auto object-contain object-center"
+                                        speed="60s"
+                                    />
+                                </div>
+                            </div>
+                        )}
+                        {section === 'Challenges & Learnings' && (
+                            <ChallengesLearnings />
+                        )}
+                        {section === 'Future Evolution' && (
+                            <div className="w-full max-w-[960px] flex flex-col items-start gap-[32px] mt-8 mx-auto">
+                                
+                                {/* 1. Conversational Setup */}
+                                <div className="w-full flex flex-col items-center gap-[32px]">
+                                    <div className="w-full flex flex-col items-start gap-[8px]">
+                                        <h4 className="font-inter font-medium text-[16px] leading-[29px] text-[#3D495A] m-0">
+                                            1. Conversational Setup (The AI Co-Pilot).
+                                        </h4>
+                                        <p className="font-inter font-normal text-[16px] leading-[29px] text-[#3D495A] m-0">
+                                            Even with our streamlined Quick Wizard, an admin still has to click through a page of settings. Our next evolution turns that process into a simple conversation. Imagine an HR Manager logging in and simply typing:
+                                        </p>
+                                    </div>
+                                    
+                                    <div className="w-full flex flex-row justify-center items-center gap-[10px]">
+                                        <p className="w-full max-w-[671px] font-inter italic font-normal text-[16px] leading-[29px] text-center text-[#3D495A] m-0">
+                                            "I need to run a 360-performance review for the entire Engineering department starting next Monday, using our standard 5-point scale."
+                                        </p>
+                                    </div>
+                                    
+                                    <p className="w-full font-inter font-normal text-[16px] leading-[29px] text-[#3D495A] m-0">
+                                        Instead of navigating menus, the AI Co-Pilot understands the intent, securely queries the backend data we just spent months organizing, and instantly generates a fully configured cycle draft for review.
+                                    </p>
+                                </div>
+
+                                {/* 2. Natural Language Search */}
+                                <div className="w-full flex flex-col items-center gap-[32px]">
+                                    <div className="w-full flex flex-col items-start gap-[8px]">
+                                        <h4 className="font-inter font-medium text-[16px] leading-[29px] text-[#3D495A] m-0">
+                                            2. Natural Language Search.
+                                        </h4>
+                                        <p className="font-inter font-normal text-[16px] leading-[29px] text-[#3D495A] m-0">
+                                            When you are managing performance reviews for thousands of employees, finding one specific problem like a missing manager or a delayed self-evaluation is a massive headache. Currently, HR Manager have to hunt through complex filters and data tables. The future of this platform replaces those tables with a conversational search bar. HR Manager should be able to just ask the system:
+                                        </p>
+                                    </div>
+                                    
+                                    <div className="w-full flex flex-row justify-center items-center gap-[10px]">
+                                        <p className="w-full max-w-[671px] font-inter italic font-normal text-[16px] leading-[29px] text-center text-[#3D495A] m-0">
+                                            "Update the Q4 review cycle to hide peers feedback names from their managers."
+                                        </p>
+                                    </div>
+                                    
+                                    <p className="w-full font-inter font-normal text-[16px] leading-[29px] text-[#3D495A] m-0">
+                                        This entirely bypasses the need for complex data table manipulation, allowing managers to surface critical bottlenecks instantly using natural language.
+                                    </p>
+                                    {/* Section Divider & Closer Manifesto */}
+                                    <div className="w-full flex flex-col items-center gap-[56px] mt-[32px]">
+                                        
+                                        {/* Divider */}
+                                        <div className="w-full h-[1px] bg-[rgba(218,220,222,0.57)]"></div>
+
+                                        {/* Manifesto Text */}
+                                        <div className="w-full max-w-[668px] flex flex-col gap-[28px]">
+                                            <p className="font-inter italic font-medium text-[16px] leading-[29px] text-center text-[#3D495A] m-0">
+                                                We didn't just redesign a 12-step configuration maze; we dismantled a system that treated HR leaders like data-entry clerks.
+                                            </p>
+                                            <p className="font-inter italic font-medium text-[16px] leading-[29px] text-center text-[#3D495A] m-0">
+                                                My design philosophy is absolute: the burden of complexity belongs to the machine, never the human.
+                                            </p>
+                                            <p className="font-inter italic font-medium text-[16px] leading-[29px] text-center text-[#3D495A] m-0">
+                                                By building architecture that scales silently, we aren't just reducing clicks—we are restoring autonomy and dignity to the workplace.
+                                            </p>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+
+                            </div>
                         )}
                         </div>
                     </section>
@@ -394,6 +712,29 @@ export default function ReviewSettings() {
                     <div className="w-full h-[1px] bg-[#DADCDE]/28"></div>
                 </React.Fragment>
                 ))}
+
+                {/* Case Study Footer & CTA */}
+                <div className="w-full h-[834px] flex flex-col items-center">
+                    
+                    {/* Centered CTA Container */}
+                    <div className="w-full flex-1 flex items-center justify-center">
+                        <a 
+                            href="https://www.linkedin.com/in/harshapeddinti/" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="font-['Perfectly_Nineties'] text-[24px] leading-[29px] text-[#243244] hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer"
+                        >
+                            I did. Will you?
+                        </a>
+                    </div>
+
+                    {/* Footer Graphic Clip */}
+                    {/* This container acts as a rigid clipping mask for the existing component, aligning it top-left */}
+                    <div className="w-full max-w-[1664px] h-[124px] shrink-0 bg-[rgba(218,220,222,0.57)] overflow-hidden flex items-start justify-start">
+                        <Footergraphic />
+                    </div>
+
+                </div>
             </main>
         </div>
     );

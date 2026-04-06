@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-export default function Impactshowcase() {
+export default function ImpactshowcaseFeature() {
     const [isExpanded, setIsExpanded] = useState(false);
 
     return (
@@ -15,8 +15,8 @@ export default function Impactshowcase() {
                         className="w-[24px] h-[24px] shrink-0"
                     />
                     <div className="flex flex-col">
-                        <span className="text-[16px] font-medium text-[#243244] leading-[1.2]">Review Cycle creation success</span>
-                        <span className="text-[14px] text-[#535F6F] leading-[1.2] mt-[2px]">Validate usability improvement</span>
+                        <span className="text-[16px] font-medium text-[#243244] leading-[1.2]">Feature Adoption</span>
+                        <span className="text-[14px] text-[#535F6F] leading-[1.2] mt-[2px]">Measure Review Design, Views, templates and timelines</span>
                     </div>
                 </div>
 
@@ -24,39 +24,30 @@ export default function Impactshowcase() {
 
                 <div className="flex flex-row gap-[56px] w-full">
                     <div className="flex flex-col flex-1 gap-[8px]">
-                        <div className="text-[12px] font-semibold text-[#3D495A]">Metric</div>
+                        <div className="text-[12px] font-semibold text-[#3D495A]">Feature</div>
                         <div className="flex flex-col gap-[8px] text-[16px] text-[#535F6F]">
-                            <div>Completion rate</div>
-                            <div>Median creation time</div>
-                            <div>Drop-off by each step</div>
-                            <div>Step revisit frequency</div>
+                            <div>Views Configuration</div>
+                            <div>Review Design</div>
+                            <div>Template usage rate</div>
+                            <div>Timeline interactions</div>
                         </div>
                     </div>
                     <div className="flex flex-col flex-1 gap-[8px]">
-                        <div className="text-[12px] font-semibold text-[#3D495A]">Before</div>
+                        <div className="text-[12px] font-semibold text-[#3D495A]">Adoption Rate</div>
                         <div className="flex flex-col gap-[8px] text-[16px] text-[#535F6F]">
-                            <div>58–62%</div>
-                            <div>18–22 min</div>
-                            <div>~</div>
-                            <div>2.6</div>
-                        </div>
-                    </div>
-                    <div className="flex flex-col flex-1 gap-[8px]">
-                        <div className="text-[12px] font-semibold text-[#3D495A]">After</div>
-                        <div className="flex flex-col gap-[8px] text-[16px] text-[#535F6F]">
-                            <div>78–83%</div>
-                            <div>11–14 min</div>
-                            <div>0.7 median</div>
-                            <div>1.4</div>
+                            <div>52–64% LBs usage</div>
+                            <div>68–75% SMBs usage</div>
+                            <div>58–66%</div>
+                            <div>70–78% cycles used timeline</div>
                         </div>
                     </div>
                     <div className="flex flex-col flex-1 gap-[8px]">
                         <div className="text-[12px] font-semibold text-[#3D495A]">Impact</div>
                         <div className="flex flex-col gap-[8px] text-[16px] text-[#535F6F]">
-                            <div>Reduced friction</div>
-                            <div>Faster ToT</div>
-                            <div>Clearer configuration</div>
-                            <div>Lower cognitive load</div>
+                            <div>Validates scalability need</div>
+                            <div>Reduced decision fatigue</div>
+                            <div>Efficiency in behavior</div>
+                            <div>Ease of Alignment</div>
                         </div>
                     </div>
                 </div>
@@ -69,20 +60,20 @@ export default function Impactshowcase() {
                         <div className="w-[423px]">
                             <ul className="list-disc pl-5 m-0 flex flex-col gap-2">
                                 <li className="font-inter font-normal text-[16px] leading-[29px] text-[#535F6F]">
-                                    Journey Funnel: Start &gt; Basic Settings &gt; Reviewees &gt; Templates &gt; Calibration &gt; Timelines &gt; Results &gt; Summary &gt; Launch
+                                    Review Design usage SMBs Vs LBs
+                                </li>
+                                <li className="font-inter font-normal text-[16px] leading-[29px] text-[#535F6F]">
+                                    Views configuration SMBs Vs LBs
                                 </li>
                             </ul>
                         </div>
                         <div className="w-[423px]">
                             <ul className="list-disc pl-5 m-0 flex flex-col gap-2">
                                 <li className="font-inter font-normal text-[16px] leading-[29px] text-[#535F6F]">
-                                    Back navigation frequency
+                                    Template frequencies
                                 </li>
                                 <li className="font-inter font-normal text-[16px] leading-[29px] text-[#535F6F]">
-                                    Median Review Cycle creation time
-                                </li>
-                                <li className="font-inter font-normal text-[16px] leading-[29px] text-[#535F6F]">
-                                    Drop-off by each step
+                                    Timeline interaction rate
                                 </li>
                             </ul>
                         </div>
@@ -112,7 +103,7 @@ export default function Impactshowcase() {
                     <div className="w-full px-[24px] pb-[16px] flex flex-row pt-2">
                         <div className="w-[500px] flex flex-col gap-1 text-[12px] text-[#535F6F]">
                             <div>organization size</div>
-                            <div>cycle type</div>
+                            <div>Views size</div>
                             <div>views used</div>
                             <div>Review design used</div>
                             <div>template type</div>
@@ -120,21 +111,20 @@ export default function Impactshowcase() {
                         </div>
                         <div className="w-[412px] flex flex-row gap-[50px]">
                             <div className="flex flex-col gap-[0px] text-[12px] text-[#535F6F]">
-                                <div>cycle_creation_started</div>
-                                <div>first_time</div>
-                                <div>review_design_used</div>
-                                <div>cycle_basic_settings</div>
-                                <div>employee_count</div>
-                                <div>reviewees_configured</div>
-                                <div>reviewers_configured</div>
+                                <div>view_created</div>
+                                <div>view_applied_to_cycle</div>
+                                <div>view_edited</div>
+                                <div>multi_view_used</div>
+                                <div>defaults_loaded</div>
+                                <div>defaults_modified</div>
+                                <div>defaults_overridden</div>
                             </div>
                             <div className="flex flex-col gap-[0px] text-[12px] text-[#535F6F]">
-                                <div>cycle_launched</div>
-                                <div>templates_selected</div>
-                                <div>calibration_configured</div>
-                                <div>results_configured</div>
+                                <div>template_opened</div>
+                                <div>template_adjusted</div>
+                                <div>suggested_used</div>
+                                <div>timeline_opened</div>
                                 <div>timeline_reviewed</div>
-                                <div>cycle_summary_viewed</div>
                             </div>
                         </div>
                     </div>

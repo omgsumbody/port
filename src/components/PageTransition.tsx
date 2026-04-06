@@ -18,7 +18,10 @@ export default function PageTransition({ children }: { children: React.ReactNode
 
     return (
         <AnimatePresence mode="wait">
-            <motion.div key={pathname}>
+            <motion.div
+                key={pathname}
+                exit={{ transition: { when: "afterChildren" } }}
+            >
                 {children}
 
                 {blocks.map((b, i) => (

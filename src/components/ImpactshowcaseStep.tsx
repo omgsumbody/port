@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-export default function Impactshowcase() {
+export default function ImpactshowcaseStep() {
     const [isExpanded, setIsExpanded] = useState(false);
 
     return (
@@ -15,8 +15,8 @@ export default function Impactshowcase() {
                         className="w-[24px] h-[24px] shrink-0"
                     />
                     <div className="flex flex-col">
-                        <span className="text-[16px] font-medium text-[#243244] leading-[1.2]">Review Cycle creation success</span>
-                        <span className="text-[14px] text-[#535F6F] leading-[1.2] mt-[2px]">Validate usability improvement</span>
+                        <span className="text-[16px] font-medium text-[#243244] leading-[1.2]">Step Configuration Complexity</span>
+                        <span className="text-[14px] text-[#535F6F] leading-[1.2] mt-[2px]">Identify decision fatigue in steps</span>
                     </div>
                 </div>
 
@@ -24,39 +24,35 @@ export default function Impactshowcase() {
 
                 <div className="flex flex-row gap-[56px] w-full">
                     <div className="flex flex-col flex-1 gap-[8px]">
-                        <div className="text-[12px] font-semibold text-[#3D495A]">Metric</div>
+                        <div className="text-[12px] font-semibold text-[#3D495A]">Step</div>
                         <div className="flex flex-col gap-[8px] text-[16px] text-[#535F6F]">
-                            <div>Completion rate</div>
-                            <div>Median creation time</div>
-                            <div>Drop-off by each step</div>
-                            <div>Step revisit frequency</div>
+                            <div>Elements setup</div>
+                            <div>Calibration setup</div>
+                            <div>Timelines setup</div>
                         </div>
                     </div>
                     <div className="flex flex-col flex-1 gap-[8px]">
-                        <div className="text-[12px] font-semibold text-[#3D495A]">Before</div>
+                        <div className="text-[12px] font-semibold text-[#3D495A]">Drop-off Before</div>
                         <div className="flex flex-col gap-[8px] text-[16px] text-[#535F6F]">
-                            <div>58–62%</div>
-                            <div>18–22 min</div>
-                            <div>~</div>
-                            <div>2.6</div>
+                            <div>~44%</div>
+                            <div>~19%</div>
+                            <div>~16%</div>
                         </div>
                     </div>
                     <div className="flex flex-col flex-1 gap-[8px]">
                         <div className="text-[12px] font-semibold text-[#3D495A]">After</div>
                         <div className="flex flex-col gap-[8px] text-[16px] text-[#535F6F]">
-                            <div>78–83%</div>
-                            <div>11–14 min</div>
-                            <div>0.7 median</div>
-                            <div>1.4</div>
+                            <div>11–13%</div>
+                            <div>9–11%</div>
+                            <div>6–8%</div>
                         </div>
                     </div>
                     <div className="flex flex-col flex-1 gap-[8px]">
                         <div className="text-[12px] font-semibold text-[#3D495A]">Impact</div>
                         <div className="flex flex-col gap-[8px] text-[16px] text-[#535F6F]">
-                            <div>Reduced friction</div>
-                            <div>Faster ToT</div>
-                            <div>Clearer configuration</div>
-                            <div>Lower cognitive load</div>
+                            <div>Improved clarity</div>
+                            <div>Modular decision structure</div>
+                            <div>Better planning visibility</div>
                         </div>
                     </div>
                 </div>
@@ -69,20 +65,20 @@ export default function Impactshowcase() {
                         <div className="w-[423px]">
                             <ul className="list-disc pl-5 m-0 flex flex-col gap-2">
                                 <li className="font-inter font-normal text-[16px] leading-[29px] text-[#535F6F]">
-                                    Journey Funnel: Start &gt; Basic Settings &gt; Reviewees &gt; Templates &gt; Calibration &gt; Timelines &gt; Results &gt; Summary &gt; Launch
+                                    Step time distribution
+                                </li>
+                                <li className="font-inter font-normal text-[16px] leading-[29px] text-[#535F6F]">
+                                    Back navigation frequency
                                 </li>
                             </ul>
                         </div>
                         <div className="w-[423px]">
                             <ul className="list-disc pl-5 m-0 flex flex-col gap-2">
                                 <li className="font-inter font-normal text-[16px] leading-[29px] text-[#535F6F]">
-                                    Back navigation frequency
+                                    Idle time tracker
                                 </li>
                                 <li className="font-inter font-normal text-[16px] leading-[29px] text-[#535F6F]">
-                                    Median Review Cycle creation time
-                                </li>
-                                <li className="font-inter font-normal text-[16px] leading-[29px] text-[#535F6F]">
-                                    Drop-off by each step
+                                    Tooltip/help interaction counter
                                 </li>
                             </ul>
                         </div>

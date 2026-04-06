@@ -5,9 +5,11 @@ interface ImageTickerProps {
     images?: (string | { id: number, src: string, alt: string })[];
     className?: string;
     imageClassName?: string;
+    itemClassName?: string;
+    speed?: string;
 }
 
-const ImageTicker: React.FC<ImageTickerProps> = ({ images, className, imageClassName }) => {
+const ImageTicker: React.FC<ImageTickerProps> = ({ images, className, imageClassName, itemClassName, speed }) => {
     // 6 placeholder images as requested
     const placeholderImages = [
         { id: 1, src: '/placeholder.png', alt: 'Placeholder 1' },
@@ -33,7 +35,10 @@ const ImageTicker: React.FC<ImageTickerProps> = ({ images, className, imageClass
             <div className="absolute right-0 top-0 bottom-0 w-[24px] bg-gradient-to-l from-[#f5f7f9] to-transparent z-10 pointer-events-none"></div>
 
             {/* Scrolling Track */}
-            <div className="flex animate-ticker min-w-max gap-[18px] group-[&:hover]:[animation-play-state:paused] pause-hover">
+            <div 
+                className="flex animate-ticker min-w-max gap-[18px] group-[&:hover]:[animation-play-state:paused] pause-hover"
+                style={speed ? { animationDuration: speed } : undefined}
+            >
                 {scrollingImages.map((img, index) => {
                     const isString = typeof img === 'string';
                     const keyId = isString ? `${img}-${index}` : `${img.id}-${index}`;
@@ -41,7 +46,7 @@ const ImageTicker: React.FC<ImageTickerProps> = ({ images, className, imageClass
                     return (
                         <div 
                             key={keyId} 
-                            className="h-[158px] shrink-0 flex items-center justify-center p-4 bg-white/50 border border-grey-10 rounded-lg w-[200px]"
+                            className={itemClassName || "h-[158px] shrink-0 flex items-center justify-center p-4 bg-white/50 border border-grey-10 rounded-lg w-[200px]"}
                         >
                             {isString ? (
                                 // eslint-disable-next-line @next/next/no-img-element

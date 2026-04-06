@@ -12,9 +12,13 @@ export default function AboutHero() {
                     bringing design and leadership expertise to startups in SaaS, Ai, HR Tech and Healthcare.
                 </p>
                 
-                {/* Image Placeholder */}
-                <div className="absolute left-[920px] top-[76px] w-[924px] h-[472px] bg-[#F2F2F2]">
-                    {/* Image will be injected here later */}
+                {/* Image */}
+                <div className="absolute left-[920px] top-[76px] w-[924px] h-[472px] bg-[#F2F2F2] overflow-hidden relative rounded-[16px]">
+                    <img 
+                        src="/IMG2.jpg" 
+                        alt="Leadership and Design Expertise" 
+                        className="w-full h-full object-cover object-left" 
+                    />
                 </div>
             </div>
         </section>
