@@ -10,9 +10,12 @@ import HeroCard from "@/components/HeroCard";
 import BentoCard from "@/components/BentoCard";
 import ShadowOverlay from "@/components/ShadowOverlay";
 import CardExpandModal from "@/components/CardExpandModal";
+import MavenExpandModal from "@/components/MavenExpandModal";
+import { BentoGridViewportStagger } from "@/components/MotionWrappers";
 
 export default function Home() {
   const [isHeroModalOpen, setIsHeroModalOpen] = useState(false);
+  const [isMavenModalOpen, setIsMavenModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen flex flex-col font-sans relative">
@@ -38,7 +41,7 @@ export default function Home() {
         <HeroCard onKnowMoreClick={() => setIsHeroModalOpen(true)} />
 
         {/* Bento Grid Wrapper */}
-        <div className="w-full max-w-[1484px] mx-auto mt-[32px] flex flex-col gap-[32px]">
+        <BentoGridViewportStagger className="w-full max-w-[1484px] mx-auto mt-[32px] flex flex-col gap-[32px]">
           
           {/* Staggered Columns */}
           <div className="flex flex-col xl:flex-row gap-[32px] w-full">
@@ -50,6 +53,7 @@ export default function Home() {
                   variant="row" 
                   title="Mesh Ai (Maven)" 
                   description="Improve the quality and tonality of review feedback." 
+                  onClick={() => setIsMavenModalOpen(true)}
                 />
               </div>
               <div className="h-auto xl:h-[280px]">
@@ -90,7 +94,7 @@ export default function Home() {
             />
           </div>
 
-        </div>
+        </BentoGridViewportStagger>
       </section>
 
       {/* ─── SECTION 2: MAIN BODY (Cards & Interactions) ─────── */}
@@ -121,6 +125,11 @@ export default function Home() {
           title: 'Empowering HR with Scalable, Modular Performance Settings', 
           body: 'Replacing a rigid 12-step maze with a bifurcated architecture empowers HR to independently launch customized, scalable performance reviews in minutes without support.' 
         }} 
+      />
+      <MavenExpandModal
+        isOpen={isMavenModalOpen}
+        onClose={() => setIsMavenModalOpen(false)}
+        cardIndex={1}
       />
     </div>
   );

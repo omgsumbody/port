@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import { BentoCardMotionWrapper } from '@/components/MotionWrappers';
 
 interface BentoCardProps {
   title: string;
@@ -29,8 +30,9 @@ const BentoCard: React.FC<BentoCardProps> = ({
   };
 
   return (
-    <div 
-      onMouseMove={handleMouseMove}
+    <BentoCardMotionWrapper className="w-full h-full">
+      <div 
+        onMouseMove={handleMouseMove}
       style={{
         '--mouse-x': `${mousePosition.x}px`,
         '--mouse-y': `${mousePosition.y}px`,
@@ -92,7 +94,8 @@ const BentoCard: React.FC<BentoCardProps> = ({
         </button>
       </div>
 
-    </div>
+      </div>
+    </BentoCardMotionWrapper>
   );
 };
 

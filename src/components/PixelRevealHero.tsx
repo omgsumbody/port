@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
+import { HeroTypographyReveal } from "@/components/MotionWrappers";
 
 const PIXEL_SIZE = 16;          // Each block is 16x16px
 const BRUSH_RADIUS = 48;        // Mouse reveals squares within this radius
@@ -191,9 +192,11 @@ export default function PixelRevealHero({ hideContent = false }: PixelRevealHero
                         >
                             0-10x
                         </motion.div>
-                        <h1 className="relative text-[40px] font-bold tracking-[-0.02em] leading-[52px] text-[#3D495A] font-sans z-20">
-                            Turning ideas into impactful products from concept to production.
-                        </h1>
+                        <HeroTypographyReveal 
+                            as="h1" 
+                            className="relative justify-center text-[40px] font-bold tracking-[-0.02em] leading-[52px] text-[#3D495A] font-sans z-20" 
+                            text="Turning ideas into impactful products from concept to production."
+                        />
                     </div>
 
                     {/* Narrative Line */}

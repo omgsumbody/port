@@ -1,6 +1,7 @@
 "use client";
 
 import PixelRevealHero from "@/components/PixelRevealHero";
+import { GenericScrollRevealWrapper } from "@/components/MotionWrappers";
 
 const experiences = [
     { 
@@ -61,47 +62,50 @@ export default function AboutBody() {
                 <div className="w-[923px] flex flex-col items-start gap-[32px]">
 
                     {/* Intro Paragraph */}
-                    <p className="w-full font-inter font-normal text-[18px] leading-[30px] text-[#3D495A]">
-                        With over 8 years of experience, I&apos;ve had the privilege of helping companies like Mesh, Hypersonix,
-                        and Nearbuy through design. I&apos;m an avid pc enthusiast (built my own), washed up video game pro
-                        (played Overwatch for LXG Chennai), lately, I&apos;m diving into the world of custom keyboard building.
-                        I believe in following your instincts, so if something here resonates with you, feel free to reach out.
-                    </p>
+                    <GenericScrollRevealWrapper delay={0}>
+                        <p className="w-full font-inter font-normal text-[18px] leading-[30px] text-[#3D495A]">
+                            With over 8 years of experience, I&apos;ve had the privilege of helping companies like Mesh, Hypersonix,
+                            and Nearbuy through design. I&apos;m an avid pc enthusiast (built my own), washed up video game pro
+                            (played Overwatch for LXG Chennai), lately, I&apos;m diving into the world of custom keyboard building.
+                            I believe in following your instincts, so if something here resonates with you, feel free to reach out.
+                        </p>
+                    </GenericScrollRevealWrapper>
 
                     {/* Experience Cards */}
                     <div className="w-full flex flex-col">
                         {experiences.map((exp, index) => (
-                            <div
-                                key={index}
-                                className="w-full flex flex-row items-center py-[24px] pr-[10px] gap-[24px] border-b border-[#DADCDE] hover:border-grey-40 transition-colors duration-300 group cursor-pointer"
-                            >
-                                {/* Logo */}
-                                <div className="w-[72px] h-[72px] bg-[#F3F3F3] shrink-0 overflow-hidden relative rounded-md">
-                                    <img src={exp.logo} alt={`${exp.company} logo`} className="w-full h-full object-cover" />
-                                </div>
+                            <GenericScrollRevealWrapper key={index} delay={0.1 + (index * 0.1)}>
+                                <div
+                                    className="w-full flex flex-row items-center py-[24px] pr-[10px] gap-[24px] border-b border-[#DADCDE] hover:border-grey-40 transition-colors duration-300 group cursor-pointer"
+                                >
+                                    {/* Logo */}
+                                    <div className="w-[72px] h-[72px] bg-[#F3F3F3] shrink-0 overflow-hidden relative rounded-md">
+                                        <img src={exp.logo} alt={`${exp.company} logo`} className="w-full h-full object-cover" />
+                                    </div>
 
-                                {/* Company Info */}
-                                <div className="w-[396px] flex flex-col gap-[8px]">
-                                    <h3 className="font-inter font-normal text-[24px] leading-[32px] text-[#3D495A] flex items-center gap-[8px]">
-                                        {exp.company}
-                                        {exp.exitedTo && (
-                                            <span className="text-[16px] leading-[24px] text-[#3D495A]">
-                                                {exp.exitedTo}
-                                            </span>
-                                        )}
-                                    </h3>
-                                    <span className="font-inter font-normal text-[18px] leading-[24px] text-[#3D495A]">
-                                        {exp.subtitle}
-                                    </span>
-                                </div>
+                                    {/* Company Info */}
+                                    <div className="w-[396px] flex flex-col gap-[8px]">
+                                        <h3 className="font-inter font-normal text-[24px] leading-[32px] text-[#3D495A] flex items-center gap-[8px]">
+                                            {exp.company}
+                                            {exp.exitedTo && (
+                                                <span className="text-[16px] leading-[24px] text-[#3D495A]">
+                                                    {exp.exitedTo}
+                                                </span>
+                                            )}
+                                        </h3>
+                                        <span className="font-inter font-normal text-[18px] leading-[24px] text-[#3D495A]">
+                                            {exp.subtitle}
+                                        </span>
+                                    </div>
 
-                                {/* Role Info */}
-                                <div className="w-[396px] flex flex-col gap-[4px]">
-                                    <h4 className="font-inter font-normal text-[24px] leading-[32px] text-[#3D495A]">
-                                        {exp.role}
-                                    </h4>
+                                    {/* Role Info */}
+                                    <div className="w-[396px] flex flex-col gap-[4px]">
+                                        <h4 className="font-inter font-normal text-[24px] leading-[32px] text-[#3D495A]">
+                                            {exp.role}
+                                        </h4>
+                                    </div>
                                 </div>
-                            </div>
+                            </GenericScrollRevealWrapper>
                         ))}
                     </div>
 
