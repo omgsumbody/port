@@ -142,7 +142,7 @@ export const EditorialProfileImageReveal = ({
         // Strict image rendering properties to guarantee pixel-perfect scaling without blur or jitter
         className="w-full h-full object-cover"
         style={{
-          imageRendering: "high-quality",
+          imageRendering: "pixelated",
           WebkitBackfaceVisibility: "hidden",
           backfaceVisibility: "hidden",
           transform: "translateZ(0)",
