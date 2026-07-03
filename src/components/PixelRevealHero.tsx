@@ -187,7 +187,7 @@ export default function PixelRevealHero({ hideContent = false }: PixelRevealHero
                         <motion.div
                             initial={{ opacity: 0, x: 20, y: -10, rotate: 10 }}
                             animate={{ opacity: 1, x: 0, y: 0, rotate: -3 }}
-                            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
                             className="absolute top-[-18px] left-[50%] -ml-[140px] md:ml-[0px] md:left-[80px] lg:left-[120px] bg-[#FEF9C3] rounded-2xl px-4 py-1 text-[#64748b] font-medium font-sans text-[20px] z-10"
                         >
                             0-10x

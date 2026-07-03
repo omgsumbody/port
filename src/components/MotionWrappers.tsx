@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const customEasing = [0.76, 0, 0.24, 1];
+const customEasing = [0.76, 0, 0.24, 1] as const;
 const defaultDuration = 1;
 
 // 1. Hero Typography Reveal
