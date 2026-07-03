@@ -1,77 +1,57 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
-
-const socialLinks = [
-  { label: "linkedin", href: "#" },
-  { label: "twitter", href: "#" },
-  { label: "behance", href: "#" },
-];
+import React from 'react';
 
 export default function FooterBar() {
   return (
-    <div className="w-full bg-white flex items-center justify-between px-10 py-10">
-      {/* Left: Logo */}
-      <div className="flex-shrink-0">
-        <Image
-          src="/1.svg"
-          alt="Logo"
-          width={136}
-          height={60}
-          className="object-contain"
-        />
+    <div className="w-full flex flex-col md:flex-row justify-between items-center px-6 mb-9">
+      {/* Left Side (Logo) */}
+      <div className="w-[136px] h-[60px]">
+        <img src="/logofull.svg" alt="Logo" className="w-full h-full object-contain" />
       </div>
 
-      {/* Center: Social links */}
-      <div className="flex items-center gap-[86px]">
-        {socialLinks.map(({ label, href }) => (
+      {/* Right Side (Links & Copyright) */}
+      <div className="flex flex-col items-center md:items-end gap-4">
+        {/* Top Row (Social Icons) */}
+        <div className="flex flex-row items-center gap-[18px]">
           <a
-            key={label}
-            href={href}
+            href="https://www.linkedin.com/in/harshapeddinti/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[16px] font-normal text-[#3D495A] underline transition-colors duration-150 hover:text-[#990C02]"
+            className="cursor-pointer hover:opacity-75 transition-opacity"
           >
-            {label}
+            <div className="w-6 h-6">
+              <img src="/linkedin.svg" alt="LinkedIn" className="w-full h-full object-contain" />
+            </div>
           </a>
-        ))}
-      </div>
-
-      {/* Right: Copyright block */}
-      <div className="flex flex-col items-end gap-3">
-        {/* Top row: tagline */}
-        <p className="text-[16px] font-normal text-[#3D495A] text-right">
-          Designed with love, coded with vibes.
-        </p>
-        {/* Bottom row: © + name */}
-        <div className="flex items-center gap-1">
-          {/* Copyright circle SVG */}
-          <svg
-            width="17"
-            height="17"
-            viewBox="0 0 17 17"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="flex-shrink-0"
+          <a
+            href="https://x.com/omgsumbody"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-pointer hover:opacity-75 transition-opacity"
           >
-            <circle
-              cx="8.5"
-              cy="8.5"
-              r="8"
-              stroke="#3D495A"
-              strokeWidth="0.75"
-              fill="none"
-            />
-            <path
-              d="M10.8 6.7C10.3 6.1 9.5 5.7 8.6 5.7C7.0 5.7 5.8 7.0 5.8 8.5C5.8 10.1 7.0 11.3 8.6 11.3C9.5 11.3 10.3 10.9 10.8 10.3"
-              stroke="#3D495A"
-              strokeWidth="0.75"
-              strokeLinecap="round"
-              fill="none"
-            />
-          </svg>
-          <span className="text-[16px] font-normal text-[#3D495A]">
+            <div className="w-6 h-6">
+              <img src="/twitter.svg" alt="Twitter" className="w-full h-full object-contain" />
+            </div>
+          </a>
+          <a
+            href="https://www.behance.net/harshapeddinti"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-pointer hover:opacity-75 transition-opacity"
+          >
+            <div className="w-6 h-6">
+              <img src="/behance.svg" alt="Behance" className="w-full h-full object-contain" />
+            </div>
+          </a>
+        </div>
+
+        {/* Bottom Row (Copyright) */}
+        <div className="flex flex-row items-start gap-1">
+          <div className="w-[20px] h-[20px]">
+            <img src="/copyright.svg" alt="Copyright" className="w-full h-full object-contain" />
+          </div>
+          <span className="font-sans font-normal text-base text-[#192434]">
             Harshapeddintidesign. All rights reserved.
           </span>
         </div>

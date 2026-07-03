@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -27,9 +27,12 @@ export default function CardExpandModal({ isOpen, onClose, cardIndex, cardInfo }
         }, 300); // wait for modal exit animation (0.4s transition, 300ms is enough)
     };
 
+    const [bottomGifKey, setBottomGifKey] = useState(Date.now());
+
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
+            setBottomGifKey(Date.now());
         } else {
             document.body.style.overflow = 'unset';
         }
@@ -140,7 +143,7 @@ export default function CardExpandModal({ isOpen, onClose, cardIndex, cardInfo }
                         <div className="absolute inset-0 bg-grey-00/[0.18]"></div>
                         {cardIndex === 0 ? (
                             <img
-                                src="/assets/Landing/cards exp/card0hm.gif"
+                                src="https://res.cloudinary.com/des7zr831/image/upload/v1783076417/reviewsettings_expand_1_v0m5gh.gif"
                                 alt="Review Settings UI"
                                 style={{
                                     position: 'absolute',
@@ -170,8 +173,15 @@ export default function CardExpandModal({ isOpen, onClose, cardIndex, cardInfo }
                             )}
                         </div>
                         <div className="relative overflow-hidden w-[683px] h-[250px] rounded-xl flex items-center justify-center bg-[url('/assets/Landing/cards%20exp/modalbg.svg')] bg-cover bg-center bg-fixed">
-                            <div className="absolute inset-0 bg-grey-00/[0.18]"></div>
-                            <span className="relative z-10 text-white font-medium">Bottom Right Media (683x250)</span>
+                            {cardIndex === 0 ? (
+                                <img
+                                    src={`https://res.cloudinary.com/des7zr831/image/upload/v1783076452/reviewsettings_expand_2_in02cd.gif?t=${bottomGifKey}`}
+                                    alt="Bottom Right Media"
+                                    className="absolute inset-0 w-full h-full object-cover object-center"
+                                />
+                            ) : (
+                                <span className="relative z-10 text-white font-medium">Bottom Right Media (683x250)</span>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -181,29 +191,27 @@ export default function CardExpandModal({ isOpen, onClose, cardIndex, cardInfo }
                     {[
                         {
                             text: "Modular & Plug-and-Play Control: Categorize and redesign current settings to offer both plug-and-play simplicity and deep modular control.",
-                            contentPaddingClass: "pt-[20px] pb-[20px] pr-[20px] pl-0"
+                            contentPaddingClass: "pt-[20px] pb-[20px] pr-[20px] pl-0",
+                            iconSrc: "/assets/Landing/cards exp/h1.svg"
                         },
                         {
                             text: "Organizational Alignment: Achieve a creation cycle philosophy catered to every small, medium, large organization's needs.",
-                            contentPaddingClass: "p-[20px]"
+                            contentPaddingClass: "p-[20px]",
+                            iconSrc: "/assets/Landing/cards exp/h2.svg"
                         },
                         {
                             text: "Friction Reduction: Decrease drop-off rates while helping HR managers build better, faster performance Review Cycles.",
-                            contentPaddingClass: "pt-[20px] pb-[20px] pl-[20px] pr-0"
+                            contentPaddingClass: "pt-[20px] pb-[20px] pl-[20px] pr-0",
+                            iconSrc: "/assets/Landing/cards exp/h3.svg"
                         }
                     ].map((item, index) => (
                         <div
                             key={`highlight-${index}`}
                             // Removed container padding as requested, padding relies purely on content limits or spacing out child elements
-                            className={`flex flex-col gap-4 border border-dashed border-gray-200 rounded-lg ${item.contentPaddingClass}`}
+                            className={`flex flex-col gap-4 ${item.contentPaddingClass}`}
                         >
-                            {/* Icon Box within the card */}
-                            <div className="w-[32px] h-[32px] bg-gray-200 rounded flex items-center justify-center shrink-0">
-                                {/* SVG Placeholder */}
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-500">
-                                    <circle cx="12" cy="12" r="10" />
-                                </svg>
-                            </div>
+                            {/* Icon Image */}
+                            <img src={item.iconSrc} alt={`Highlight Icon ${index + 1}`} className="w-[32px] h-[32px] object-contain shrink-0" />
                             {/* Highlight Body Text */}
                             <p className="font-inter font-normal text-[16px] leading-[24px] text-grey-80">
                                 {item.text}
@@ -222,18 +230,23 @@ export default function CardExpandModal({ isOpen, onClose, cardIndex, cardInfo }
                     {[
                         {
                             text: "Automated Departmental Scaling: Configure a core review template with 'Views' and instantly push localized rules across your entire org chart with zero manual replication.",
+                            imageSrc: "/assets/Landing/cards exp/fe1.png"
                         },
                         {
-                            text: "Plug-and-Play Quick Wizard: Launch industry-standard review cycles instantly using data-backed defaults, allowing teams to bypass complex setups and accelerate time-to-value.",
+                            text: "Plug-and-Play: Launch industry standard review cycles instantly using data-backed defaults, allowing to bypass complex setups and accelerate time-to-value.",
+                            imageSrc: "/assets/Landing/cards exp/fe2.png"
                         },
                         {
                             text: "Conflict-Free Visual Scheduling: Eliminate timeline overlaps and missed deadlines before you launch using an interactive, real-time Gantt verification engine.",
+                            imageSrc: "/assets/Landing/cards exp/fe3.png"
                         }
                     ].map((item, index) => (
                         <div key={`feature-${index}`} className="flex flex-col w-full">
-                            <div className="w-full h-[300px] bg-red-50 rounded-xl flex items-center justify-center border border-red-100 mb-[12px]">
-                                <span className="text-red-300 font-medium">Feature Media ({index + 1})</span>
-                            </div>
+                            <img
+                                src={item.imageSrc}
+                                alt={`Feature ${index + 1}`}
+                                className="w-full h-[300px] object-cover rounded-xl border border-[#DADCDE]/60 mb-[12px]"
+                            />
                             <p className="font-inter font-normal text-[16px] leading-[24px] text-grey-80">
                                 {item.text}
                             </p>
@@ -269,9 +282,11 @@ export default function CardExpandModal({ isOpen, onClose, cardIndex, cardInfo }
                         </p>
 
                         {/* Action CTA */}
-                        <button
-                            onClick={handleNavigate}
-                            className="group flex items-center font-inter font-medium text-[16px] text-[#990C02] hover:text-[#661900] transition-colors"
+                        <a
+                            href="https://www.mesh.ai/case-studies-copy"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group flex w-max items-center font-inter font-medium text-[16px] text-[#990C02] hover:text-[#661900] transition-colors decoration-transparent"
                         >
                             Read the featured story
                             <div className="relative w-[14px] h-[14px] ml-[8px] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-[2px]">
@@ -283,7 +298,7 @@ export default function CardExpandModal({ isOpen, onClose, cardIndex, cardInfo }
                                     <path d="M3 7H10.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                             </div>
-                        </button>
+                        </a>
                     </div>
                 </div>
 

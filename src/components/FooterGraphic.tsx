@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function FooterGraphic() {
   return (
-    <div className="w-full flex justify-center pb-10 sm:pb-20">
+    <div className="w-full flex justify-center">
       <svg className="w-full h-auto pointer-events-none select-none drop-shadow-sm" width="1328" height="417" viewBox="0 0 1328 417" fill="none">
 <rect y="0.699219" width="17.2468" height="18.0779" fill="#CA071A"><animate attributeName="fill" values="#CA071A;#F9A900;#FFFDF5;#D44A00;#151515;#535F6F;#E5DA2E;#FF5900;#CA071A" dur="4.4s" begin="2.0s" repeatCount="indefinite" calcMode="discrete" /></rect>
 <rect x="17.2461" y="0.699219" width="17.2468" height="18.0779" fill="#F9A900"><animate attributeName="fill" values="#F9A900;#FFFDF5;#D44A00;#151515;#535F6F;#E5DA2E;#FF5900;#CA071A;#F9A900" dur="7.9s" begin="1.8s" repeatCount="indefinite" calcMode="discrete" /></rect>

@@ -26,7 +26,7 @@ const ImageTicker: React.FC<ImageTickerProps> = ({ images, className, imageClass
     const scrollingImages = [...displayImages, ...displayImages];
 
     return (
-        <div className={`w-full max-w-[960px] h-[158px] rounded-[12px] bg-[#f5f7f9] overflow-hidden border border-[#D9DCDE]/50 shadow-[0px_0px_2px_0px_rgba(217,220,222,0.4)] relative flex items-center group/ticker ${className || ''}`}>
+        <div className={`w-full max-w-[960px] h-auto py-[24px] rounded-[12px] bg-[#f5f7f9] overflow-hidden border border-[#D9DCDE]/50 shadow-[0px_0px_2px_0px_rgba(217,220,222,0.4)] relative flex items-center group/ticker ${className || ''}`}>
             
             {/* Left Edge Fade */}
             <div className="absolute left-0 top-0 bottom-0 w-[24px] bg-gradient-to-r from-[#f5f7f9] to-transparent z-10 pointer-events-none"></div>
@@ -46,7 +46,7 @@ const ImageTicker: React.FC<ImageTickerProps> = ({ images, className, imageClass
                     return (
                         <div 
                             key={keyId} 
-                            className={itemClassName || "h-[158px] shrink-0 flex items-center justify-center p-4 bg-white/50 border border-grey-10 rounded-lg w-[200px]"}
+                            className={itemClassName || "shrink-0 flex items-center justify-center p-4 bg-white/50 border border-grey-10 rounded-[12px] w-auto h-auto shadow-sm"}
                         >
                             {isString ? (
                                 // eslint-disable-next-line @next/next/no-img-element

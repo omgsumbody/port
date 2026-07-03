@@ -25,13 +25,13 @@ export default function Home() {
       <footer className="footer-section w-full bg-[#FFFDF5] flex flex-col items-center">
         {/* Full-width responsive container for the Footer group */}
         <div className="w-full max-w-[1920px] mx-auto flex flex-col items-center">
+          <FooterBar />
           <img
             src="/footer cid.svg"
             alt="Footer Brand Banner"
             className="w-full h-auto object-contain block"
           />
           <FooterGraphic />
-          <FooterBar />
         </div>
       </footer>
     </div>

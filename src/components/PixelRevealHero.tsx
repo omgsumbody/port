@@ -3,7 +3,7 @@
 import React, { useRef, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 
-const PIXEL_SIZE = 24;          // Each block is 24x24px
+const PIXEL_SIZE = 16;          // Each block is 16x16px
 const BRUSH_RADIUS = 48;        // Mouse reveals squares within this radius
 const FADE_DELAY_MS = 14000;    // Squares start filling back in after 14 seconds
 const FADE_DURATION_MS = 1200;  // Duration for the refill animation per block
@@ -156,7 +156,7 @@ export default function PixelRevealHero({ hideContent = false }: PixelRevealHero
         <div
             ref={containerRef}
             onMouseMove={handleMouseMove}
-            className={`${hideContent ? "h-full" : "h-[576px]"} w-full flex flex-col items-center justify-center relative overflow-hidden`}
+            className={`${hideContent ? "h-full" : "h-[80vh] min-h-[500px]"} w-full flex flex-col items-center justify-center relative overflow-hidden`}
         >
             {/* Layer 0: Gradient background (bottom) */}
             <div
