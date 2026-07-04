@@ -16,7 +16,7 @@ export default function AboutHero() {
                 </p>
                 
                 <EditorialProfileImageReveal
-                    src="/IMG2.jpg"
+                    src="/IMG20.JPG"
                     alt="Leadership and Design Expertise"
                     className="absolute left-[920px] top-[76px] w-[924px] h-[472px] bg-[#F2F2F2] rounded-[16px]"
                     overlayColor="#F2F2F2"

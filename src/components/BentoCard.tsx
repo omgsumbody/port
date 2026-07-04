@@ -77,20 +77,22 @@ const BentoCard: React.FC<BentoCardProps> = ({
         {/* Button */}
         <button 
           onClick={onClick}
-          className={`group flex flex-row justify-center items-center h-[48px] px-6 gap-[8px] bg-[#FFDED3] text-[#980D01] hover:bg-[#990C02] hover:text-white rounded-[12px] transition-colors duration-300 cursor-pointer border-none ${isWide ? 'w-full sm:w-fit shrink-0' : 'w-full mt-auto'}`}
+          className={`group flex flex-row justify-center items-center h-[48px] px-6 gap-[8px] bg-[#FFDED3] text-[#980D01] rounded-[12px] border-none ${isWide ? 'w-full sm:w-fit shrink-0' : 'w-full mt-auto'} ${onClick ? 'hover:bg-[#990C02] hover:text-white transition-colors duration-300 cursor-pointer' : 'cursor-default pointer-events-none'}`}
         >
-          <span className="font-inter font-semibold text-[16px] leading-[19px] tracking-[0.01em]">
-            Know More
+          <span className={`font-inter font-semibold text-[16px] leading-[19px] tracking-[0.01em] ${!onClick ? 'opacity-[0.65]' : ''}`}>
+            {onClick ? 'Know More' : 'Being Built'}
           </span>
-          <div className="relative w-[14px] h-[14px] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-[2px]">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute transition-opacity duration-300 opacity-100 group-hover:opacity-0">
-                <path d="M5 3L9 7L5 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute transition-opacity duration-300 opacity-0 group-hover:opacity-100">
-                <path d="M7 3L11 7L7 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M3 7H10.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-            </svg>
-          </div>
+          {onClick && (
+            <div className="relative w-[14px] h-[14px] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-[2px]">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute transition-opacity duration-300 opacity-100 group-hover:opacity-0">
+                  <path d="M5 3L9 7L5 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+                  <path d="M7 3L11 7L7 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M3 7H10.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+              </svg>
+            </div>
+          )}
         </button>
       </div>
 

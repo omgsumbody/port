@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import PageTransition from "@/components/PageTransition";
+import MobileSplash from "@/components/MobileSplash";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -66,8 +67,11 @@ const perfectlyNineties = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio Template",
+  title: "Harsha Peddinti",
   description: "Responsive Next.js Template",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -78,7 +82,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${perfectlyNineties.variable} font-sans antialiased text-[#3D495A] bg-white`}>
-        <PageTransition>{children}</PageTransition>
+        <MobileSplash />
+        <div className="hidden md:block">
+          <PageTransition />
+          {children}
+        </div>
       </body>
     </html>
   );

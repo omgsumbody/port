@@ -49,7 +49,7 @@ export default function FooterBar() {
         {/* Bottom Row (Copyright) */}
         <div className="flex flex-row items-start gap-1">
           <div className="w-[20px] h-[20px]">
-            <img src="/copyright.svg" alt="Copyright" className="w-full h-full object-contain" />
+            <img src="/Copyright.svg" alt="Copyright" className="w-full h-full object-contain" />
           </div>
           <span className="font-sans font-normal text-base text-[#192434]">
             Harshapeddintidesign. All rights reserved.

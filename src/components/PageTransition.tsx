@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { usePathname } from "next/navigation";
-import React from "react";
+import { motion } from "framer-motion";
+import { usePathname, useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 const blocks = [
     { color: '#E5DA2E' }, // Block 1
@@ -10,34 +10,46 @@ const blocks = [
     { color: '#F2693C' }, // Block 3
 ];
 
-export default function PageTransition({ children }: { children: React.ReactNode }) {
-    const pathname = usePathname();
+export const triggerTransition = (href: string) => {
+    window.dispatchEvent(new CustomEvent('page-transition', { detail: href }));
+};
 
-    const duration = 0.2;
+export default function PageTransition() {
+    const pathname = usePathname();
+    const router = useRouter();
+    const [isExiting, setIsExiting] = useState(false);
+
+    const duration = 0.3;
     const stagger = 0.05;
 
-    return (
-        <AnimatePresence mode="wait">
-            <motion.div
-                key={pathname}
-                exit={{ transition: { when: "afterChildren" } }}
-            >
-                {children}
+    useEffect(() => {
+        const handleTransition = (e: any) => {
+            const targetHref = e.detail;
+            setIsExiting(true);
+            setTimeout(() => {
+                router.push(targetHref);
+                setIsExiting(false);
+            }, 400); // Wait for the blocks to fully slide down (0.3s + delay)
+        };
+        window.addEventListener('page-transition', handleTransition);
+        return () => window.removeEventListener('page-transition', handleTransition);
+    }, [router]);
 
-                {blocks.map((b, i) => (
-                    <motion.div
-                        key={i}
-                        className="fixed w-[33.34vw] h-[100dvh] z-[9999] pointer-events-none"
-                        style={{
-                            backgroundColor: b.color,
-                            left: `${i * 33.3333}vw`
-                        }}
-                        initial={{ top: "0vh" }}
-                        animate={{ top: "-100vh", transition: { duration, ease: [1, 0, 0, 1], delay: i * stagger } }}
-                        exit={{ top: ["100vh", "0vh"], transition: { duration, ease: [1, 0, 0, 1], delay: i * stagger } }}
-                    />
-                ))}
-            </motion.div>
-        </AnimatePresence>
+    return (
+        <div className="fixed inset-0 z-[9999] pointer-events-none">
+            {blocks.map((b, i) => (
+                <motion.div
+                    key={`${pathname}-block-${i}`}
+                    className="absolute w-[33.34vw] h-[100dvh]"
+                    style={{
+                        backgroundColor: b.color,
+                        left: `${i * 33.3333}vw`,
+                        top: 0
+                    }}
+                    initial={{ y: "0%" }}
+                    animate={{ y: isExiting ? "0%" : "-100%", transition: { duration, ease: [0.76, 0, 0.24, 1], delay: i * stagger } }}
+                />
+            ))}
+        </div>
     );
 }

@@ -105,7 +105,7 @@ export default function Home() {
       */}
 
       {/* ─── SECTION 3: FOOTER ───────────────────────────────── */}
-      <footer aria-label="Footer" className="footer-section w-full bg-[#FFFDF5] flex flex-col items-center">
+      <footer aria-label="Footer" className="footer-section w-full bg-[#FFFDF5] flex flex-col items-center pt-[160px]">
         <div className="w-full max-w-[1920px] mx-auto flex flex-col items-center">
           <FooterBar />
           <img

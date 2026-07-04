@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import { triggerTransition } from './PageTransition';
 
 const PercentageCounter = dynamic(() => import('./PercentageCounter'), { ssr: false });
 const PercentageCounterMaven = dynamic(() => import('./PercentageCounterMaven'), { ssr: false });
@@ -21,11 +22,9 @@ export default function MavenExpandModal({ isOpen, onClose, cardIndex, cardInfo 
     const router = useRouter();
 
     const handleNavigate = () => {
-        onClose(); // trigger modal exit animation
-        setTimeout(() => {
-            document.body.style.overflow = 'auto'; // safety unlock
-            router.push('/review-settings');
-        }, 300); // wait for modal exit animation (0.4s transition, 300ms is enough)
+        document.body.style.overflow = 'unset';
+        onClose();
+        triggerTransition('/review-settings');
     };
 
     const [bottomGifKey, setBottomGifKey] = useState(Date.now());

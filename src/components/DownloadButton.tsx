@@ -41,7 +41,7 @@ export default function DownloadButton({ href, fileName, className = '' }: Downl
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
         timeoutRef.current = setTimeout(() => {
-            updateMode(1); // Return to hover state after 2 seconds
+            updateMode(0); // Return to default state after 2 seconds
         }, 2000);
     };
 
