@@ -7,20 +7,20 @@ import Image from "next/image";
 import CardExpandModal from "./CardExpandModal";
 
 const fannedCardsData = [
-    { title: "Review Settings", body: "Empowering HR with Scalable, Modular Performance Settings", left: 265, top: 258.65, rotate: -4 },
-    { title: "Views", body: "Create and save custom analytical views across all Mesh products.", left: 495.76, top: 295.36, rotate: -5 },
-    { title: "Mesh Ai(Maven)", body: "Improve the quality and tonality of review feedback.", left: 677.37, top: 229.31, rotate: -1 },
-    { title: "Review Home", body: "Home for performance, development, calibration & talent decisions.", left: 912.88, top: 306.66, rotate: 0 },
-    { title: "Review Formfilling", body: "A performance feedback form which brings data together from all modules.", left: 1134.9, top: 227, rotate: 2 },
-    { title: "Rabbit Design System", body: "Design system used by Mesh organization and products.", left: 1372.9, top: 302, rotate: 2 }
+    { title: "Review Settings", body: "Empowering HR with Scalable, Modular Performance Settings", left: "calc(50% - 695px)", top: 258.65, rotate: -4 },
+    { title: "Views", body: "Create and save custom analytical views across all Mesh products.", left: "calc(50% - 464.24px)", top: 295.36, rotate: -5 },
+    { title: "Mesh Ai(Maven)", body: "Improve the quality and tonality of review feedback.", left: "calc(50% - 282.63px)", top: 229.31, rotate: -1 },
+    { title: "Review Home", body: "Home for performance, development, calibration & talent decisions.", left: "calc(50% - 47.12px)", top: 306.66, rotate: 0 },
+    { title: "Review Formfilling", body: "A performance feedback form which brings data together from all modules.", left: "calc(50% + 174.9px)", top: 227, rotate: 2 },
+    { title: "Rabbit Design System", body: "Design system used by Mesh organization and products.", left: "calc(50% + 412.9px)", top: 302, rotate: 2 }
 ];
 
 const bottomRowSlots = [
-    { left: 332, top: 578, rotate: -5 },
-    { left: 587, top: 580, rotate: -1 },
-    { left: 833, top: 582, rotate: 0 },
-    { left: 1060, top: 580, rotate: 2 },
-    { left: 1307, top: 578, rotate: 2 }
+    { left: "calc(50% - 628px)", top: 578, rotate: -5 },
+    { left: "calc(50% - 373px)", top: 580, rotate: -1 },
+    { left: "calc(50% - 127px)", top: 582, rotate: 0 },
+    { left: "calc(50% + 100px)", top: 580, rotate: 2 },
+    { left: "calc(50% + 347px)", top: 578, rotate: 2 }
 ];
 
 // Inactive slot index for a given card index (skips the active card)
@@ -143,7 +143,10 @@ export default function MainBodyShowcase() {
                                         '--gradient-angle': `${gradientAngle}deg`,
                                         zIndex: 100,
                                         position: "absolute",
-                                        left: "calc(50% - 1484px / 2)",
+                                        left: 0,
+                                        right: 0,
+                                        marginLeft: "auto",
+                                        marginRight: "auto",
                                         top: "calc(50% - 544px / 2)"
                                     } as React.CSSProperties}
                                     className="bg-[#FCFDFD] border border-grey-00 rounded-[24px] shadow-sm overflow-hidden w-full h-[544px] hover-center-card pointer-events-auto max-w-[1484px]"

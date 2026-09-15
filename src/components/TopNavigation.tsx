@@ -77,8 +77,8 @@ export default function TopNavigation() {
                 </div>
 
                 <DownloadButton
-                    href="/HarshaP.pdf"
-                    fileName="HarshaP.pdf"
+                    href="/Harsha_Peddinti.pdf"
+                    fileName="Harsha_Peddinti.pdf"
                     className="w-[140px] h-[87px] text-[16px] font-normal leading-[1.8em]"
                 />
             </div>

@@ -4,39 +4,34 @@ import PixelRevealHero from "@/components/PixelRevealHero";
 import { GenericScrollRevealWrapper } from "@/components/MotionWrappers";
 
 const experiences = [
-    { 
-        company: "Mesh.ai", 
-        subtitle: "Jun 2022 - Present · 3 yrs 10 mos",
+    {
+        company: "Mesh.ai",
+        subtitle: "Jun 2022 - Present · 4 yrs 4 mos",
         role: "Lead Product Designer",
         logo: "/mesh.jpg"
     },
-    { 
-        company: "Hypersonix.ai", 
+    {
+        company: "Hypersonix.ai",
         subtitle: "Feb 2020 - Jun 2022 · 2 yrs 5 mos",
         role: "Senior Product Designer",
         logo: "/hypersonix.jpg"
     },
-    { 
-        company: "Hypersonix.ai", 
-        subtitle: "Feb 2020 - Jun 2022 · 2 yrs 5 mos",
-        role: "Product Designer",
-        logo: "/hypersonix.jpg"
-    },
-    { 
+
+    {
         company: "Zealth",
         exitedTo: "(exited to Findem.ai)",
         subtitle: "Aug 2018 - Feb 2020 · 1 yr 7 mos",
         role: "Product Designer",
         logo: "/zealth.jpg"
     },
-    { 
-        company: "Nearbuy.com", 
+    {
+        company: "Nearbuy.com",
         subtitle: "Sep 2017 - Aug 2018 · 1 yr",
         role: "Graphic Designer",
         logo: "/nearbuy.jpg"
     },
-    { 
-        company: "Lincode Labs", 
+    {
+        company: "Lincode Labs",
         subtitle: "Dec 2017 - Jan 2018 · 2 mos",
         role: "Frontend Dev",
         logo: "/lincodelabs.jpg"
@@ -64,7 +59,7 @@ export default function AboutBody() {
                     {/* Intro Paragraph */}
                     <GenericScrollRevealWrapper delay={0}>
                         <p className="w-full font-inter font-normal text-[18px] leading-[30px] text-[#3D495A]">
-                            With over 8 years of experience, I&apos;ve had the privilege of helping companies like Mesh, Hypersonix,
+                            With over 9 years of experience, I&apos;ve had the privilege of helping companies like Mesh, Hypersonix,
                             and Nearbuy through design. I&apos;m an avid pc enthusiast (built my own), washed up video game pro
                             (played Overwatch for LXG Chennai), lately, I&apos;m diving into the world of custom keyboard building.
                             I believe in following your instincts, so if something here resonates with you, feel free to reach out.

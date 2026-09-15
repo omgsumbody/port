@@ -113,7 +113,7 @@ export default function Home() {
             alt="Footer Brand Banner"
             className="w-full h-auto object-contain block"
           />
-          <FooterGraphic />
+          <FooterGraphic maskBottomRows={true} />
         </div>
       </footer>
 
