@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import PageTransition from "@/components/PageTransition";
-import MobileSplash from "@/components/MobileSplash";
+import ViewportGate from "@/components/ViewportGate";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -122,11 +121,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${anthropicSerif.variable} ${anthropicSans.variable} ${perfectlyNineties.variable} font-sans antialiased text-[#3D495A] bg-white`}>
-        <MobileSplash />
-        <div className="hidden md:block">
-          <PageTransition />
-          {children}
-        </div>
+        <ViewportGate>{children}</ViewportGate>
       </body>
     </html>
   );

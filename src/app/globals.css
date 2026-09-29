@@ -54,6 +54,19 @@
   /* Accent — decorative marks only, never fills or CTAs */
   --color-clay: #d97757;
 
+  /* Outcomes — before (red) and after (green) in metrics */
+  --color-gain: #2e6a3e;        /* after values, positive change */
+  --color-gain-tint: #e8f3eb;   /* change pills */
+  --color-gain-wash: #f4f9f5;   /* result bands */
+  --color-gain-line: #dcebdf;
+  --color-loss: #9a3b2a;        /* before values */
+
+  /* Left navigation (kept from v1) */
+  --color-nav-active: #243244;
+  --color-nav-idle: #6d7885;
+  --color-nav-mark: #3d495a;
+  --color-nav-rule: #d2d5d9;
+
   /* Type families */
   --font-editorial: var(--font-anthropic-serif), "Source Serif 4", Charter, Georgia, serif;
   --font-ui: var(--font-anthropic-sans), ui-sans-serif, system-ui, sans-serif;
@@ -87,6 +100,28 @@
 
   /* Motion — one easing family for the whole site */
   --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* v2 marquee: items carry their own trailing gap, so -50% loops seamlessly */
+@keyframes v2-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.v2-marquee {
+  animation: v2-marquee 70s linear infinite;
+}
+@keyframes v2-marquee-y {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+.v2-marquee-y {
+  animation: v2-marquee-y 48s linear infinite;
+}
+.pause-hover-children:hover .v2-marquee-y {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .v2-marquee, .v2-marquee-y { animation: none; }
 }
 
 .pause-hover:hover {
