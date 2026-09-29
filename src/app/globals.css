@@ -29,6 +29,66 @@
   }
 }
 
+/*
+ * Editorial design system (v2) — source of truth: DESIGN.md
+ * Warm monochrome: ink on parchment, clay as the only chromatic mark.
+ * Names are deliberately distinct from Tailwind defaults so v1 pages are unaffected.
+ */
+@theme inline {
+  /* Surfaces */
+  --color-parchment: #f8f8f6;   /* page canvas */
+  --color-paper: #ffffff;       /* elevated cards */
+  --color-stone: #efeeeb;       /* nested surfaces, alt bands */
+  --color-obsidian: #000000;    /* footer band only */
+
+  /* Ink (text hierarchy) */
+  --color-ink: #121212;         /* primary text, headings */
+  --color-graphite: #373734;    /* secondary text, nav, buttons */
+  --color-ashen: #7b7974;       /* captions, helper text */
+  --color-pebble: #9c9a92;      /* tertiary labels */
+
+  /* Lines */
+  --color-mist: #b7b7b5;        /* stronger hairline */
+  --color-chalk: #e7e6e1;       /* default hairline, soft tints */
+
+  /* Accent — decorative marks only, never fills or CTAs */
+  --color-clay: #d97757;
+
+  /* Type families */
+  --font-editorial: var(--font-source-serif), Charter, Georgia, serif;
+  --font-ui: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Type scale (fluid where the role is display-sized) */
+  --text-caption: 12px;
+  --text-caption--line-height: 1.5;
+  --text-body: 14px;
+  --text-body--line-height: 1.5;
+  --text-prose: 16px;
+  --text-prose--line-height: 1.63;
+  --text-lede: clamp(18px, 1.2vw + 13px, 22px);
+  --text-lede--line-height: 1.45;
+  --text-heading-sm: 24px;
+  --text-heading-sm--line-height: 1.33;
+  --text-heading: clamp(26px, 1vw + 20px, 30px);
+  --text-heading--line-height: 1.2;
+  --text-stat: clamp(32px, 2vw + 20px, 40px);
+  --text-stat--line-height: 1.1;
+  --text-display: clamp(40px, 3.5vw + 20px, 56px);
+  --text-display--line-height: 1.08;
+
+  /* Shape */
+  --radius-control: 8px;        /* buttons, inputs, nav pills, badges */
+  --radius-card: 16px;          /* nested / secondary cards */
+  --radius-card-lg: 24px;       /* elevated cards */
+
+  /* Elevation — soft washes only */
+  --shadow-soft: 0 4px 20px 0 rgb(0 0 0 / 0.04);
+  --shadow-lift: 0 4px 24px 0 rgb(55 55 52 / 0.08);
+
+  /* Motion — one easing family for the whole site */
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 .pause-hover:hover {
   animation-play-state: paused;
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Source_Serif_4 } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import PageTransition from "@/components/PageTransition";
@@ -8,6 +8,14 @@ import MobileSplash from "@/components/MobileSplash";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+});
+
+const sourceSerif = Source_Serif_4({
+  variable: "--font-source-serif",
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+  display: "swap",
 });
 
 const perfectlyNineties = localFont({
@@ -81,7 +89,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${perfectlyNineties.variable} font-sans antialiased text-[#3D495A] bg-white`}>
+      <body className={`${inter.variable} ${sourceSerif.variable} ${perfectlyNineties.variable} font-sans antialiased text-[#3D495A] bg-white`}>
         <MobileSplash />
         <div className="hidden md:block">
           <PageTransition />

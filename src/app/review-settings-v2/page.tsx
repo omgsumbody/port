@@ -17,6 +17,8 @@ import SectionTitle from '@/components/SectionTitle';
 import ImageShowcase from '@/components/ImageShowcase';
 import DesignShow from '@/components/designshow';
 import React, { useEffect, useState, useRef } from 'react';
+import { MotionConfig } from 'framer-motion';
+import CaseOverview, { type CaseStat, type CaseMeta } from '@/components/v2/CaseOverview';
 
 const SECTIONS = [
     'Overview',
@@ -32,6 +34,19 @@ const SECTIONS = [
     'Impact & Metrics',
     'Challenges & Learnings',
     'Future Evolution'
+];
+
+const OVERVIEW_STATS: CaseStat[] = [
+    { value: '35%', label: 'Faster creation of review cycles', trend: 'up' },
+    { value: '17%', label: 'Improved user feedback', trend: 'up' },
+    { value: '40%', label: 'Lower abandonment rate', trend: 'down' },
+    { value: '8%', label: 'More review cycles created', trend: 'up' },
+];
+
+const OVERVIEW_META: CaseMeta[] = [
+    { label: 'Team', items: ['6 Developers', '1 Product Leader', '1 Product Designer (me)'] },
+    { label: 'Tools', items: ['Figma', 'Coda', 'Miro'] },
+    { label: 'Disciplines', items: ['Product Strategy', 'Experience Research', 'Interaction Design'] },
 ];
 
 export default function ReviewSettingsV2() {
@@ -84,9 +99,10 @@ export default function ReviewSettingsV2() {
     };
 
     return (
-        <div className="flex w-full min-h-screen bg-white">
+        <MotionConfig reducedMotion="user">
+        <div className="flex w-full min-h-screen bg-parchment">
             {/* Left sticky navigation */}
-            <aside className="w-[256px] h-screen sticky top-0 border-r border-grey-10 shrink-0 bg-white flex flex-col">
+            <aside className="w-[256px] h-screen sticky top-0 border-r border-chalk shrink-0 bg-parchment flex flex-col">
                 {/* Logo Container - border removed directly below logo container */}
                 <div className="h-[96px] flex items-center">
                     <Link
@@ -121,60 +137,18 @@ export default function ReviewSettingsV2() {
                     <React.Fragment key={section}>
                         <section
                             id={section}
-                            className="flex flex-col items-center py-[56px] w-full"
+                            className={`flex flex-col items-center w-full px-6 md:px-10 ${section === 'Overview' ? 'pt-16 pb-20 md:pt-20 md:pb-24' : 'py-[56px]'}`}
                         >
                             <div className="flex flex-col items-start w-full max-w-[960px] gap-[12px]">
                                 {section === 'Overview' ? (
-                                    <>
-                                        <SectionTitle title="Review Settings" />
-                                        <p className="text-body-m">Helping businesses empower performance reviews with modular settings control and reducing the time to create a performance cycle.</p>
-
-                                        <div className="flex flex-row w-full max-w-[960px] gap-[24px] h-fit">
-                                            {[
-                                                { value: '35%', subtitle: 'Faster creation of review cycles', icon: '/assets/Review settings/up.svg' },
-                                                { value: '17%', subtitle: 'Improved user feedback', icon: '/assets/Review settings/up.svg' },
-                                                { value: '40%', subtitle: 'Reduced abandonment rate', icon: '/assets/Review settings/down.svg' },
-                                                { value: '8%', subtitle: 'More review cycles created', icon: '/assets/Review settings/up.svg' }
-                                            ].map((stat, i) => (
-                                                <div key={i} className="flex-1 flex flex-col h-[132px] rounded-[12px] bg-[#f5f7f9] overflow-hidden border border-[#D9DCDE]/50 shadow-[0px_0px_2px_0px_rgba(217,220,222,0.4)] p-[20px] justify-start items-start gap-[12px]">
-                                                    <div className="flex flex-row items-end">
-                                                        <span className="font-inter font-semibold text-grey-50 text-[40px] leading-[1.2em]">
-                                                            {stat.value}
-                                                        </span>
-                                                        <img src={stat.icon} alt="" className="ml-[4px] mb-[4px] shrink-0" />
-                                                    </div>
-                                                    <div className="font-inter font-normal text-grey-70 text-[14px] tracking-[0.02em] leading-[16px] w-full">
-                                                        {stat.subtitle}
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-
-                                        <p className="text-body-r mt-[12px]">
-                                            Reviews & 360s is performance module in Mesh, these settings helps your Head of Resources/HR managers build a comprehensive performance feedback cycle through continuous inputs. Towards the end of December, i redesigned the review cycle creation flow and review settings dashboard.
-                                        </p>
-
-                                        <div className="flex flex-row w-full max-w-[960px] gap-[12px] h-fit mt-[24px]">
-                                            <div className="flex flex-col gap-[8px] w-[333px]">
-                                                <div className="text-body-m">Team</div>
-                                                <div className="text-body-r whitespace-pre-wrap">
-                                                    {`6 Developers\n1 Product Leader\n1 Product Designer (Me)`}
-                                                </div>
-                                            </div>
-                                            <div className="flex flex-col gap-[8px] flex-1">
-                                                <div className="text-body-m">Tools</div>
-                                                <div className="text-body-r whitespace-pre-wrap">
-                                                    {`Figma\nCoda\nMiro`}
-                                                </div>
-                                            </div>
-                                            <div className="flex flex-col gap-[8px] flex-1">
-                                                <div className="text-body-m">Disciplines</div>
-                                                <div className="text-body-r whitespace-pre-wrap">
-                                                    {`Product Strategy\nExperience Research\nInteraction Design`}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </>
+                                    <CaseOverview
+                                        eyebrow="Case study · Mesh.ai · Reviews & 360s"
+                                        title="Review Settings"
+                                        lede="Helping businesses run performance reviews their way, with modular settings and a faster path to launching a cycle."
+                                        stats={OVERVIEW_STATS}
+                                        summary="Reviews & 360s is the performance module in Mesh. Its settings help Heads of People and HR managers build a complete performance feedback cycle from continuous inputs. I redesigned the review cycle creation flow and the review settings dashboard end to end."
+                                        meta={OVERVIEW_META}
+                                    />
                                 ) : (
                                     <SectionTitle title={section} />
                                 )}
@@ -775,5 +749,6 @@ export default function ReviewSettingsV2() {
                 </div>
             </main>
         </div>
+        </MotionConfig>
     );
 }
