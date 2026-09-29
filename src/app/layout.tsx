@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Source_Serif_4 } from "next/font/google";
+import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import PageTransition from "@/components/PageTransition";
@@ -10,11 +10,43 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const sourceSerif = Source_Serif_4({
-  variable: "--font-source-serif",
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
+// v2 editorial fonts — only the cuts DESIGN.md calls for, to keep payload small
+const anthropicSerif = localFont({
+  src: [
+    {
+      path: "../../public/Anthropic Serif/AnthropicSerif-Display-Regular-Static.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/Anthropic Serif/AnthropicSerif-Display-RegularItalic-Static.otf",
+      weight: "400",
+      style: "italic",
+    },
+  ],
+  variable: "--font-anthropic-serif",
+  display: "swap",
+});
+
+const anthropicSans = localFont({
+  src: [
+    {
+      path: "../../public/Anthropic Sans/AnthropicSans-Text-Regular-Static.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/Anthropic Sans/AnthropicSans-Text-Medium-Static.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/Anthropic Sans/AnthropicSans-Text-Semibold-Static.otf",
+      weight: "600",
+      style: "normal",
+    },
+  ],
+  variable: "--font-anthropic-sans",
   display: "swap",
 });
 
@@ -89,7 +121,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${sourceSerif.variable} ${perfectlyNineties.variable} font-sans antialiased text-[#3D495A] bg-white`}>
+      <body className={`${inter.variable} ${anthropicSerif.variable} ${anthropicSans.variable} ${perfectlyNineties.variable} font-sans antialiased text-[#3D495A] bg-white`}>
         <MobileSplash />
         <div className="hidden md:block">
           <PageTransition />

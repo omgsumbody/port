@@ -55,8 +55,8 @@
   --color-clay: #d97757;
 
   /* Type families */
-  --font-editorial: var(--font-source-serif), Charter, Georgia, serif;
-  --font-ui: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-editorial: var(--font-anthropic-serif), "Source Serif 4", Charter, Georgia, serif;
+  --font-ui: var(--font-anthropic-sans), ui-sans-serif, system-ui, sans-serif;
 
   /* Type scale (fluid where the role is display-sized) */
   --text-caption: 12px;
