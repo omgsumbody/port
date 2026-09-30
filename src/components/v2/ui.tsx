@@ -22,7 +22,7 @@ export function SectionHeader({
     >
       <div className="flex flex-col gap-3">
         <h2 className="font-editorial text-[34px] leading-[1.1] font-normal text-ink lg:text-[40px]">{title}</h2>
-        {intro && <p className="max-w-[60ch] font-ui text-lg leading-[1.55] text-graphite">{intro}</p>}
+        {intro && <p className="max-w-[60ch] font-ui text-base leading-[1.55] text-graphite">{intro}</p>}
       </div>
       {aside}
     </header>
@@ -52,7 +52,7 @@ export function SplitRow({
 }
 
 export function Prose({ children, size = "md", className = "" }: { children: React.ReactNode; size?: "sm" | "md" | "lg"; className?: string }) {
-  const s = size === "lg" ? "text-lg leading-[1.6] lg:text-xl" : size === "sm" ? "text-base leading-[1.63]" : "text-lg leading-[1.6]";
+  const s = size === "lg" ? "text-base leading-[1.6] lg:text-xl" : size === "sm" ? "text-base leading-[1.63]" : "text-base leading-[1.6]";
   return <p className={`font-ui ${s} text-graphite ${className}`}>{children}</p>;
 }
 

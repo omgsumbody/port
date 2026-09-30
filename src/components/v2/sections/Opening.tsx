@@ -32,7 +32,7 @@ export function Overview() {
 
       <header className="grid grid-cols-1 lg:grid-cols-4">
         <div className="flex flex-col justify-center gap-5 py-10 lg:col-span-3 lg:py-14 lg:pr-12">
-          <h1 className="font-editorial text-[52px] leading-none font-normal tracking-[-0.01em] text-ink lg:text-[72px]">
+          <h1 className="font-editorial text-[34px] leading-[1.1] font-normal text-ink lg:text-[40px]">
             Review Settings
           </h1>
           <p className="font-ui text-xl leading-[1.45] text-graphite lg:text-[22px]">
@@ -129,7 +129,7 @@ export function Challenge() {
         </header>
 
         <div className="flex flex-col gap-10 pb-16">
-          <SummaryText className="font-ui text-lg leading-[1.6] text-graphite lg:text-xl">
+          <SummaryText className="font-ui text-base leading-[1.6] text-graphite lg:text-xl">
             <Prose size="lg">
               Say you&apos;re a Head of People or an HR manager setting up a performance review for your organisation. The
               platform&apos;s review cycle settings were uncategorised, and they didn&apos;t give HR managers the freedom to build a

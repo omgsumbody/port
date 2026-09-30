@@ -151,7 +151,7 @@ export default function MobileSummary() {
           </figure>
           <div className="flex flex-col gap-3 pt-2">
             <h1 className="font-editorial text-[44px] leading-none font-normal tracking-[-0.01em]">Review Settings</h1>
-            <p className="text-lg leading-[1.5] text-graphite">
+            <p className="text-base leading-[1.5] text-graphite">
               Helping businesses run performance reviews their way, with modular settings and a faster path to launching a cycle.
             </p>
           </div>

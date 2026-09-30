@@ -162,9 +162,9 @@ function ReviewCards({ images, reverse = false }: { images: number[]; reverse?: 
 
 const CREATION_ROWS: { metric: string; impact: string; before: string; after: React.ReactNode; change?: string }[] = [
   { metric: "Completion rate", impact: "Less friction", before: "58–62%", after: "78–83%", change: "+20 pts" },
-  { metric: "Median creation time", impact: "Faster time on task", before: "18–22 min", after: <>11–14<span className="text-lg"> min</span></>, change: "−38%" },
+  { metric: "Median creation time", impact: "Faster time on task", before: "18–22 min", after: <>11–14<span className="text-base"> min</span></>, change: "−38%" },
   { metric: "Step revisits per session", impact: "Lower cognitive load", before: "2.6", after: "1.4", change: "−46%" },
-  { metric: "Drop-off per step", impact: "Clearer configuration", before: "2", after: <>0.7<span className="text-lg"> median</span></> },
+  { metric: "Drop-off per step", impact: "Clearer configuration", before: "2", after: <>0.7<span className="text-base"> median</span></> },
 ];
 
 const CREATION_EVENTS = [
@@ -205,7 +205,7 @@ function CreationScorecard() {
                 <span className="font-ui text-base leading-[1.4] text-ink">{r.metric}</span>
                 <span className="font-ui text-[13px] leading-[1.4] text-ashen">{r.impact}</span>
               </div>
-              <span className="font-ui text-lg leading-[1.3] text-loss tabular-nums">{r.before}</span>
+              <span className="font-ui text-base leading-[1.3] text-loss tabular-nums">{r.before}</span>
               <span className="font-editorial text-[30px] leading-none text-gain tabular-nums lg:text-4xl">{r.after}</span>
               <span className="justify-self-end">
                 {r.change ? <ChangePill>{r.change}</ChangePill> : <span className="font-ui text-sm leading-[1.4] text-pebble">New</span>}
@@ -315,7 +315,7 @@ function DropOffTile() {
             <span className="font-ui text-base leading-[1.4] text-ink">{step}</span>
             <span className="font-ui text-[13px] leading-[1.4] text-ashen">{impact}</span>
           </div>
-          <span className="font-ui text-lg leading-[1.3] text-loss tabular-nums">{before}</span>
+          <span className="font-ui text-base leading-[1.3] text-loss tabular-nums">{before}</span>
           <div className="flex flex-col items-start gap-2">
             <span className="font-editorial text-[30px] leading-none text-gain tabular-nums">{after}</span>
             <span className="rounded-full bg-gain-tint px-[9px] py-[3px] font-ui text-[13px] leading-[1.4] font-medium text-gain tabular-nums">
@@ -421,7 +421,7 @@ function MetricTile({
             <span className="font-medium text-ink">Mixpanel</span>
             <span>Widgets, events and properties</span>
           </span>
-          <span aria-hidden="true" className={`text-lg leading-none transition-transform duration-300 ${open ? "rotate-45" : ""}`}>
+          <span aria-hidden="true" className={`text-base leading-none transition-transform duration-300 ${open ? "rotate-45" : ""}`}>
             +
           </span>
         </button>

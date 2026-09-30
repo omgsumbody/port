@@ -91,7 +91,7 @@ export function Future() {
       <article className="grid grid-cols-1 gap-6 border-b border-chalk py-12 xl:grid-cols-[280px_minmax(0,1fr)] xl:gap-12">
         <Lead n={1} title="Conversational setup: the AI co-pilot" />
         <div className="flex flex-col gap-6">
-          <p className="font-ui text-lg leading-[1.6] text-graphite">
+          <p className="font-ui text-base leading-[1.6] text-graphite">
             Even with the streamlined Quick Wizard, an admin still clicks through a page of settings. The next evolution turns that into a
             conversation. Imagine an HR manager logging in and simply typing:
           </p>
@@ -99,7 +99,7 @@ export function Future() {
             &ldquo;I need to run a 360 performance review for the entire Engineering department starting next Monday, using our standard
             5-point scale.&rdquo;
           </Quote>
-          <p className="font-ui text-lg leading-[1.6] text-graphite">
+          <p className="font-ui text-base leading-[1.6] text-graphite">
             Instead of navigating menus, the co-pilot understands the intent, securely queries the backend data we spent months organising,
             and generates a fully configured cycle draft for review.
           </p>
@@ -131,13 +131,13 @@ export function Future() {
       <article className="grid grid-cols-1 gap-6 py-12 xl:grid-cols-[280px_minmax(0,1fr)] xl:gap-12">
         <Lead n={2} title="Natural language search" />
         <div className="flex flex-col gap-6">
-          <p className="font-ui text-lg leading-[1.6] text-graphite">
+          <p className="font-ui text-base leading-[1.6] text-graphite">
             When you manage reviews for thousands of employees, finding one problem, like a missing manager or a late self-evaluation, is a
             real headache. Today HR managers hunt through complex filters and tables. The future replaces them with a conversational search
             bar. An HR manager could just ask:
           </p>
           <Quote>&ldquo;Update the Q4 review cycle to hide peers&rsquo; feedback names from their managers.&rdquo;</Quote>
-          <p className="font-ui text-lg leading-[1.6] text-graphite">
+          <p className="font-ui text-base leading-[1.6] text-graphite">
             It bypasses complex table manipulation entirely, so managers can surface and fix bottlenecks instantly in natural language.
           </p>
           <Keyframe>
@@ -174,7 +174,7 @@ export function Future() {
           We didn&rsquo;t just redesign a twelve-step configuration maze; we dismantled a system that treated HR leaders like data-entry
           clerks.
         </p>
-        <p className="max-w-[44ch] font-ui text-lg leading-[1.6] text-graphite">
+        <p className="max-w-[44ch] font-ui text-base leading-[1.6] text-graphite">
           My design philosophy is absolute: the burden of complexity belongs to the machine, never the human.
         </p>
       </section>

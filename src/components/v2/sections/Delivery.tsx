@@ -62,7 +62,7 @@ export function Solutions() {
     <Summarizable summary="I introduced a plug-and-play, modular review cycle system: filter-based Views, calibration and scoring per View, a timeline for leadership, and a redesigned creation flow that clears old UX debt. Conversational search was deliberately deferred.">
       <div className="flex flex-col">
         <TitleWithToggle title="Proposed Solutions & MVPs" />
-        <SummaryText className="border-y border-chalk py-8 font-ui text-lg leading-[1.6] text-graphite">
+        <SummaryText className="border-y border-chalk py-8 font-ui text-base leading-[1.6] text-graphite">
           <ul className="flex flex-col">
             {SOLUTIONS.map((s) => (
               <li
@@ -91,7 +91,7 @@ export function Development() {
     <Summarizable summary="I set up a page-by-page workflow with backend APIs built ahead from the wireframes, structured Figma handoffs, continuous design and engineering syncs, and documentation everyone could refer back to.">
       <div className="flex flex-col">
         <TitleWithToggle title="Development & Implementation" />
-        <SummaryText className="font-ui text-lg leading-[1.6] text-graphite lg:text-xl">
+        <SummaryText className="font-ui text-base leading-[1.6] text-graphite lg:text-xl">
           <div className="flex flex-col gap-4">
             <Prose size="lg">
               We set up a page-by-page development cycle. Backend built their APIs ahead of time from the high-fidelity wireframes, and
@@ -120,7 +120,7 @@ export function Launch() {
     <Summarizable summary="The redesign shipped in phase two of a three-phase 2025 plan, with a release newsletter, CSM-led onboarding, and two release paths so new and ongoing review cycles both moved over safely.">
       <div className="flex flex-col">
         <TitleWithToggle title="The Launch" />
-        <SummaryText className="font-ui text-lg leading-[1.6] text-graphite lg:text-xl">
+        <SummaryText className="font-ui text-base leading-[1.6] text-graphite lg:text-xl">
           <div className="flex flex-col gap-4">
             <Prose size="lg">
               A three-phase release plan was set at the start of 2025, and this project shipped in phase two. A newsletter went out with

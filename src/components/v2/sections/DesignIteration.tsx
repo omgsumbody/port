@@ -168,7 +168,7 @@ export function DesignIteration() {
     <div className="flex flex-col gap-6">
       <header className="flex flex-col gap-3 pb-4">
         <h2 className="font-editorial text-[34px] leading-[1.1] font-normal text-ink lg:text-[40px]">Design &amp; Iteration</h2>
-        <p className="max-w-[62rem] font-ui text-lg leading-[1.55] text-graphite">
+        <p className="max-w-[62rem] font-ui text-base leading-[1.55] text-graphite">
           I mapped several journeys and wireframed the creation flow, then worked through them in syncs with the founders, product and
           tech leads. Each step below is one stage of the review cycle setup.
         </p>
@@ -204,7 +204,7 @@ export function DesignIteration() {
             <h3 className="font-editorial text-2xl leading-[1.33] font-normal text-ink">Aligning with leadership</h3>
             <SummarizeButton />
           </div>
-          <SummaryText className="font-ui text-lg leading-[1.6] text-graphite">
+          <SummaryText className="font-ui text-base leading-[1.6] text-graphite">
             <div className="flex flex-col gap-3.5">
               <Prose>
                 I then held syncs with the founders, design, product and tech leaders to finalise the flow and move ahead with

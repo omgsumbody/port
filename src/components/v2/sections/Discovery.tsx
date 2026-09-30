@@ -72,7 +72,7 @@ export function Kickoff() {
             <div className="flex justify-end">
               <SummarizeButton />
             </div>
-            <SummaryText className="font-ui text-lg leading-[1.6] text-graphite">
+            <SummaryText className="font-ui text-base leading-[1.6] text-graphite">
               <Prose>
                 I started by understanding the module through calls with our PM and reading the PRD he had prepared. After collecting
                 my thoughts into an initial mind map, I went into demo accounts and used the existing platform, testing the flow from
