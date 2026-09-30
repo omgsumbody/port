@@ -109,7 +109,9 @@ export const metadata: Metadata = {
   title: "Harsha Peddinti",
   description: "Responsive Next.js Template",
   icons: {
-    icon: "/favicon.svg",
+    // src/app/favicon.ico is picked up on its own as the fallback
+    icon: { url: "/logo.svg", type: "image/svg+xml" },
+    apple: "/apple-touch-icon.png",
   },
 };
 

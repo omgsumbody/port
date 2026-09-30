@@ -131,7 +131,7 @@ export default function ShorelineHero() {
 
         <nav className="absolute inset-x-0 top-0 z-10 flex items-center justify-between px-16 pt-7">
           <Link href="/" aria-label="Harsha Peddinti, home" className="block">
-            <img src="/favicon.svg" alt="" width={40} height={46} className="h-[46px] w-[40px]" />
+            <img src="/logo.svg" alt="" width={40} height={46} className="h-[46px] w-[40px]" />
           </Link>
           <div className="flex items-center gap-8 font-ui text-[16px] text-[#1b2330]">
             <a href="#work" className="hover:opacity-70">
