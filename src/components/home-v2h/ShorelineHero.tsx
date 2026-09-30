@@ -134,9 +134,9 @@ export default function ShorelineHero() {
             <img src="/favicon.svg" alt="" width={40} height={46} className="h-[46px] w-[40px]" />
           </Link>
           <div className="flex items-center gap-8 font-ui text-[16px] text-[#1b2330]">
-            <Link href="/" className="hover:opacity-70">
+            <a href="#work" className="hover:opacity-70">
               Work
-            </Link>
+            </a>
             <Link href="/about" className="hover:opacity-70">
               About
             </Link>

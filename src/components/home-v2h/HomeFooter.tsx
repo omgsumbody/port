@@ -1,3 +1,5 @@
+import FooterLeo from "./FooterLeo";
+
 const SOCIALS = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/harshapeddinti/" },
   { label: "X", href: "https://x.com/omgsumbody" },
@@ -21,6 +23,7 @@ export default function HomeFooter() {
         loading="lazy"
         className="block h-auto w-full"
       />
+      <FooterLeo />
       <p className="absolute inset-x-0 top-[8%] px-6 text-center font-perfectly-nineties text-[clamp(40px,5vw,80px)] font-semibold leading-none text-[#1b2330]">
         create . deliver . inspire
       </p>
