@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-import { triggerTransition } from './PageTransition';
 
 const PercentageCounter = dynamic(() => import('./PercentageCounter'), { ssr: false });
 
@@ -23,7 +22,7 @@ export default function CardExpandModal({ isOpen, onClose, cardIndex, cardInfo }
     const handleNavigate = () => {
         document.body.style.overflow = 'unset';
         onClose();
-        triggerTransition('/review-settings');
+        router.push('/review-settings');
     };
 
     const [bottomGifKey, setBottomGifKey] = useState(Date.now());
