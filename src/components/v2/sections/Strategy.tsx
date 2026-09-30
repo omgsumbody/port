@@ -1,6 +1,6 @@
 import Pic from "@/components/v2/Pic";
 import Carousel from "@/components/v2/Carousel";
-import { SectionHeader, SplitRow, SubHeading } from "@/components/v2/ui";
+import { SplitRow, SubHeading } from "@/components/v2/ui";
 
 const A = "/assets/Review settings";
 
@@ -70,24 +70,16 @@ function Icon18({ children }: { children: React.ReactNode }) {
 
 export function Strategy() {
   return (
-    <div className="flex flex-col">
-      <SectionHeader
-        ruled
-        title="Strategy"
-        intro="I framed the business problems, mapped how different companies run reviews, then tested where setup broke down with product data, interviews and tree testing."
-        aside={
-          <ol aria-label="In this section" className="flex min-w-[200px] flex-col gap-1.5 font-ui text-sm leading-[1.5] text-ashen">
-            {["The problems", "How businesses review", "Validation"].map((t, i) => (
-              <li key={t} className="flex gap-3">
-                <span className="w-5 text-pebble tabular-nums">{String(i + 1).padStart(2, "0")}</span>
-                {t}
-              </li>
-            ))}
-          </ol>
-        }
-      />
+    <div className="flex flex-col gap-24">
+      <header className="flex flex-col gap-3">
+        <h2 className="font-editorial text-[34px] leading-[1.1] font-normal text-ink lg:text-[40px]">Strategy</h2>
+        <p className="font-ui text-base leading-[1.55] text-graphite">
+          I framed the business problems, mapped how different companies run reviews, then tested where setup broke down with product
+          data, interviews and tree testing.
+        </p>
+      </header>
 
-      <SplitRow label={<Numbered n="01">The problems businesses brought us</Numbered>} className="py-16">
+      <SplitRow label={<SubHeading>The problems businesses brought us</SubHeading>}>
         <div className="grid grid-cols-1 gap-x-10 gap-y-9 md:grid-cols-2">
           {PROBLEMS.map((p) => (
             <div key={p.title} className="flex items-start gap-4">
@@ -105,12 +97,12 @@ export function Strategy() {
         </div>
       </SplitRow>
 
-      <section aria-label="Understanding businesses" className="flex flex-col gap-6 border-t border-chalk py-16">
+      <section aria-label="Understanding businesses" className="flex flex-col gap-6">
         <Carousel
           slides={MAPS}
           header={(controls) => (
             <div className="grid grid-cols-1 items-end gap-4 xl:grid-cols-[280px_minmax(0,1fr)_auto] xl:gap-12">
-              <Numbered n="02">How businesses review</Numbered>
+              <SubHeading>How businesses review</SubHeading>
               <p className="font-ui text-base leading-[1.6] text-graphite">
                 Company size, review type and frequency decide what a business needs from a cycle. These maps became the basis for our
                 defaults.
@@ -121,9 +113,9 @@ export function Strategy() {
         />
       </section>
 
-      <section aria-label="Validation" className="flex flex-col gap-8 border-t border-chalk py-16">
+      <section aria-label="Validation" className="flex flex-col gap-8">
         <div className="grid grid-cols-1 items-end gap-6 xl:grid-cols-[280px_minmax(0,1fr)] xl:gap-12">
-          <Numbered n="03">Validating where setup broke</Numbered>
+          <SubHeading>Validating where setup broke</SubHeading>
           <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
             {(
               [
@@ -213,15 +205,6 @@ export function Strategy() {
           Together, the interviews, feedback, competitive analysis and Mixpanel data became one philosophy of how businesses run reviews.
         </blockquote>
       </figure>
-    </div>
-  );
-}
-
-function Numbered({ n, children }: { n: string; children: React.ReactNode }) {
-  return (
-    <div className="flex flex-col gap-3">
-      <span className="font-ui text-sm leading-[1.5] text-pebble tabular-nums">{n}</span>
-      <SubHeading>{children}</SubHeading>
     </div>
   );
 }

@@ -62,7 +62,11 @@ export function Impact() {
               key={label}
               className={`flex flex-col gap-2.5 py-8 ${i % 2 ? "border-l border-chalk pl-6" : "pr-6"} ${i === 2 ? "lg:border-l lg:pl-6" : ""} ${i < 2 ? "border-b border-chalk lg:border-b-0" : ""}`}
             >
-              <dd className="order-1 font-editorial text-[48px] leading-none text-ink tabular-nums xl:text-[64px]">{n}</dd>
+              <dd className="order-1 flex items-baseline gap-2">
+                <span className="font-editorial text-[48px] leading-none font-bold text-ink tabular-nums xl:text-[64px]">{n}</span>
+                <span className="font-ui text-sm leading-none font-bold text-gain">{i === 1 ? "▼" : "▲"}</span>
+                <span className="sr-only">{i === 1 ? "decrease" : "increase"}</span>
+              </dd>
               <dt className="order-2 font-ui text-base leading-[1.5] text-graphite">{label}</dt>
             </div>
           ))}
