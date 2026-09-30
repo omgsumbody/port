@@ -8,3 +8,6 @@ build/
 
 # env files
 .env*
+
+# source images for the About portrait (large; kept locally, not served)
+/public/about/raw/
