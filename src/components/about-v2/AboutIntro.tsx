@@ -84,7 +84,7 @@ export default function AboutIntro() {
             .
           </p>
         </div>
-        <Link href="/home-v2h" className="font-ui text-[15px] text-ashen hover:text-[#1b2330]">
+        <Link href="/" className="font-ui text-[15px] text-ashen hover:text-[#1b2330]">
           ← Back home
         </Link>
       </div>

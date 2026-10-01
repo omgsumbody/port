@@ -22,7 +22,7 @@ const WORK: Work[] = [
       ["8%", "more review cycles created."],
     ],
     tag: { label: "Most Popular", tone: "gold", star: true },
-    href: "/review-settings-v2",
+    href: "/review-settings",
     video: "https://res.cloudinary.com/des7zr831/video/upload/v1780566788/Video_Project_9_mpw1np.mp4",
   },
   {

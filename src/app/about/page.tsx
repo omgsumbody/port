@@ -1,36 +1,37 @@
-"use client";
+import Link from "next/link";
+import AboutIntro from "@/components/about-v2/AboutIntro";
+import { AboutExperience, AboutFavourites } from "@/components/about-v2/AboutSections";
+import HomeFooter from "@/components/home-v2h/HomeFooter";
 
-import TopNavigation from "@/components/TopNavigation";
-import AboutHero from "@/components/AboutHero";
-import AboutBody from "@/components/AboutBody";
-import FooterGraphic from "@/components/FooterGraphic";
-import FooterBar from "@/components/FooterBar";
-import ShadowOverlay from "@/components/ShadowOverlay";
-
-export default function About() {
-    return (
-        <div className="min-h-screen flex flex-col font-sans relative">
-            <ShadowOverlay />
-            <header className="sticky top-0 z-50">
-                <TopNavigation />
-            </header>
-
-            <main className="flex-grow">
-                <AboutHero />
-                <AboutBody />
-            </main>
-
-            <footer aria-label="Footer" className="footer-section w-full bg-[#FFFDF5] flex flex-col items-center pt-[160px]">
-                <div className="w-full max-w-[1920px] mx-auto flex flex-col items-center">
-                    <FooterBar />
-                    <img
-                        src="/footer cid.svg"
-                        alt="Footer Brand Banner"
-                        className="w-full h-auto object-contain block"
-                    />
-                    <FooterGraphic maskBottomRows={true} />
-                </div>
-            </footer>
+// New About page, built section by section.
+export default function AboutV2() {
+  return (
+    <main className="bg-parchment">
+      <nav className="flex items-center justify-between px-6 pt-7 lg:px-16">
+        <Link href="/" aria-label="Harsha Peddinti, home" className="block">
+          <img src="/logo.svg" alt="" width={40} height={46} className="h-[46px] w-[40px]" />
+        </Link>
+        <div className="flex items-center gap-8 font-ui text-[16px] text-[#1b2330]">
+          <Link href="/#work" className="hover:opacity-70">
+            Work
+          </Link>
+          <Link href="/about" aria-current="page" className="font-semibold">
+            About
+          </Link>
+          <a
+            href="/Harsha_Peddinti.pdf"
+            target="_blank"
+            rel="noopener"
+            className="bg-[#1b2330] px-[22px] py-3 text-white hover:bg-[#2a3444]"
+          >
+            Resume
+          </a>
         </div>
-    );
+      </nav>
+      <AboutIntro />
+      <AboutExperience />
+      <AboutFavourites />
+      <HomeFooter />
+    </main>
+  );
 }
