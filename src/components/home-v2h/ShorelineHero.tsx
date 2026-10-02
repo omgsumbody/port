@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { ShorelineHandle } from "./shoreline/scene";
 import { SKY_DAWN } from "./shoreline/palette";
+import { isIntroPlaying, onIntroReveal, setHeroReady } from "@/lib/boot";
 
 // The hero pins for one extra screen of scrolling; that scroll drives the sunrise.
 const PIN_SCREENS = 1;
@@ -61,7 +62,15 @@ export default function ShorelineHero() {
       if (!handle || overUi(e)) return;
       handle.click(...toNdc(e));
     };
-    const failSafe = window.setTimeout(() => setBuilt(true), 4000);
+    // If the page loader is playing, the world holds its build until the loader clears.
+    let failSafe = 0;
+    const begin = () => {
+      handle?.release();
+      failSafe = window.setTimeout(() => setBuilt(true), 4000);
+    };
+    let unsubscribe = () => {};
+    if (isIntroPlaying()) unsubscribe = onIntroReveal(begin);
+    else begin();
 
     const resizeObserver = new ResizeObserver(() => handle?.resize());
     const visibility = new IntersectionObserver(([entry]) => handle?.setActive(entry.isIntersecting));
@@ -72,6 +81,7 @@ export default function ShorelineHero() {
       try {
         handle = createShoreline(canvas, {
           reducedMotion,
+          held: isIntroPlaying(),
           onBuilt: () => setBuilt(true),
           onContextLost: (lost) => setReady(!lost), // the CSS sky shows while the GPU recovers
         });
@@ -80,12 +90,14 @@ export default function ShorelineHero() {
           console.warn("[shoreline] WebGL unavailable, showing the CSS sky. Check chrome://gpu.", err);
         }
         setBuilt(true);
+        setHeroReady(true);
         return; // no WebGL: the CSS sky behind the canvas stays as the hero
       }
       handle.setProgress(progress());
       resizeObserver.observe(canvas);
       visibility.observe(section);
       setReady(true);
+      setHeroReady(true);
     });
 
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -99,6 +111,8 @@ export default function ShorelineHero() {
       window.removeEventListener("pointermove", onPointer);
       stage.removeEventListener("click", onClick);
       window.clearTimeout(failSafe);
+      unsubscribe();
+      setHeroReady(false);
       resizeObserver.disconnect();
       visibility.disconnect();
       handle?.dispose();

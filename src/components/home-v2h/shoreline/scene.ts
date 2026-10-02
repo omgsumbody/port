@@ -696,6 +696,8 @@ export type ShorelineHandle = {
   setPointer: (x: number, y: number) => void;
   setActive: (active: boolean) => void;
   resize: () => void;
+  /** Starts the loop of a scene created with `held`, which begins its build animation. */
+  release: () => void;
   dispose: () => void;
 };
 
@@ -711,7 +713,13 @@ type Spray = {
 
 export function createShoreline(
   canvas: HTMLCanvasElement,
-  opts: { reducedMotion: boolean; onBuilt?: () => void; onContextLost?: (lost: boolean) => void },
+  opts: {
+    reducedMotion: boolean;
+    /** Draw one frame, then wait for `release()` before running (the page loader is still up). */
+    held?: boolean;
+    onBuilt?: () => void;
+    onContextLost?: (lost: boolean) => void;
+  },
 ): ShorelineHandle {
   // Ask for the context ourselves first: when the browser has WebGL switched off, fail
   // quietly so the hero falls back to its CSS sky instead of three.js logging errors.
@@ -1356,6 +1364,7 @@ export function createShoreline(
   let hold = false; // dev: keeps time still while frames keep rendering
   let built = opts.reducedMotion;
   let lost = false; // the GPU dropped our WebGL context
+  let held = !!opts.held;
 
   const tmpColor = new THREE.Color();
   const sunWorld = new THREE.Vector3();
@@ -1445,7 +1454,7 @@ export function createShoreline(
   };
 
   const start = () => {
-    if (opts.reducedMotion || raf || lost) return;
+    if (opts.reducedMotion || raf || lost || held) return;
     last = performance.now();
     raf = requestAnimationFrame(loop);
   };
@@ -1566,6 +1575,11 @@ export function createShoreline(
     resize() {
       layout();
       if (opts.reducedMotion || !raf) renderFrame(0);
+    },
+    release() {
+      if (!held) return;
+      held = false;
+      if (active && !document.hidden) start();
     },
     dispose() {
       stop();
