@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, type PointerEvent as ReactPointerEvent } from "react";
+import { useRef, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
 import WorkCameos from "./WorkCameos";
 
 type Work = {
@@ -38,8 +38,26 @@ const WORK: Work[] = [
 ];
 
 const TAG_TONES = {
-  gold: "bg-[#FFF3DE] text-[#845200]",
-  blue: "bg-[#E6EEF7] text-[#1F4E86]",
+  gold: "bg-[#F6EBD3] text-[#6B4A0C]",
+  blue: "bg-[#E4EAF1] text-[#2C4A6E]",
+};
+
+// /home/slab.webp is drawn at 3x. The picture reaches past the card on every side: room for
+// the shadow, and below the card the slab's front face. The top face lines up with the card.
+const SLAB = { top: 24, side: 40, bottom: 80 }; // how far the picture reaches past the card
+const SLAB_SLICE = { top: 64, side: 80, bottom: 120 }; // fixed corners; the rest stretches
+const SLAB_STYLE: CSSProperties = {
+  inset: `-${SLAB.top}px -${SLAB.side}px -${SLAB.bottom}px`,
+  borderStyle: "solid",
+  borderWidth: 0,
+  // Flat fills under the picture's top and front faces, so the hairline gaps browsers can
+  // leave between slices at fractional zoom show the slab's colour, not the page.
+  backgroundImage:
+    "linear-gradient(#fdfdfc, #fdfdfc), linear-gradient(#e6e4dd, #d6d4cb 75%, #c9c7bd)",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: `calc(100% - ${2 * SLAB.side + 48}px) calc(100% - ${SLAB.top + SLAB.bottom + 12}px), calc(100% - ${2 * SLAB.side + 48}px) 16px`,
+  backgroundPosition: `${SLAB.side + 24}px ${SLAB.top + 6}px, ${SLAB.side + 24}px calc(100% - ${SLAB.bottom - 16}px)`,
+  borderImage: `url(/home/slab.webp) ${SLAB_SLICE.top * 3} ${SLAB_SLICE.side * 3} ${SLAB_SLICE.bottom * 3} fill / ${SLAB_SLICE.top}px ${SLAB_SLICE.side}px ${SLAB_SLICE.bottom}px stretch`,
 };
 
 // The warm border that follows the pointer, as on the current home page cards.
@@ -54,8 +72,10 @@ function WorkCard({ work, index }: { work: Work; index: number }) {
     <article
       data-cameo={`card-${index + 1}`}
       onPointerMove={trackPointer}
-      className="group relative flex flex-col items-center gap-8 rounded-[24px] bg-[#FCFDFD] p-6 shadow-[0px_2px_8px_rgba(0,0,0,0.08)] lg:flex-row lg:items-stretch lg:gap-10 lg:p-8"
+      className="group relative isolate flex flex-col items-center gap-8 rounded-[24px] p-6 lg:flex-row lg:items-stretch lg:gap-10 lg:p-8"
     >
+      {/* The card body: a baked soft voxel slab, nine-sliced so it fits any card size. */}
+      <div aria-hidden className="pointer-events-none absolute -z-10" style={SLAB_STYLE} />
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-10 rounded-[24px] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -69,7 +89,7 @@ function WorkCard({ work, index }: { work: Work; index: number }) {
         }}
       />
 
-      <div className="aspect-video w-full shrink-0 overflow-hidden rounded-[16px] bg-[#E5E5E5] lg:w-[52%]">
+      <div className="aspect-video w-full shrink-0 overflow-hidden rounded-[16px] bg-[#EBEAE5] lg:w-[52%]">
         {work.video ? (
           <video
             src={work.video}
@@ -81,29 +101,29 @@ function WorkCard({ work, index }: { work: Work; index: number }) {
             className="pointer-events-none h-full w-full object-cover"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center font-inter text-[15px] text-[#8A93A0]">
+          <div className="flex h-full w-full items-center justify-center font-ui text-[15px] text-ashen">
             Preview coming soon
           </div>
         )}
       </div>
 
-      <div className="flex w-full flex-1 flex-col gap-6 lg:gap-8">
+      <div className="flex w-full min-w-0 flex-1 flex-col gap-6 lg:gap-8">
         <div className="flex flex-col gap-4">
-          <h3 className="m-0 font-inter text-[28px] font-medium leading-tight text-[#243244] lg:text-[32px]">
+          <h3 className="m-0 font-perfectly-nineties text-[32px] font-semibold leading-[1.1] text-[#1b2330] lg:text-[40px]">
             {work.title}
           </h3>
-          <p className="m-0 font-inter text-[16px] leading-[1.4] text-[#3D495A]">{work.description}</p>
+          <p className="m-0 font-ui text-[17px] leading-[1.45] text-[#2e3a4a]">{work.description}</p>
         </div>
 
-        <div className="flex w-full flex-col items-start gap-4 rounded-[16px] border border-[#EDEDED] bg-[#F8F8F8] p-5 sm:flex-row sm:items-center lg:gap-7 lg:p-6">
+        <div className="flex w-full flex-col items-start gap-4 rounded-[16px] bg-[#F3F2EE] p-5 sm:flex-row sm:items-center lg:gap-7 lg:p-6">
           {work.stats.map(([value, label], i) => (
             <div key={value} className="contents">
-              {i > 0 && <div aria-hidden className="h-px w-full shrink-0 bg-[#EDEDED] sm:h-[39px] sm:w-[2px]" />}
+              {i > 0 && <div aria-hidden className="h-px w-full shrink-0 bg-[#E2E0D9] sm:h-[39px] sm:w-px" />}
               <div className="flex flex-1 items-center gap-3 lg:gap-4">
-                <span className="shrink-0 font-inter text-[32px] font-medium leading-[39px] text-[#243244]">
+                <span className="shrink-0 font-ui text-[32px] font-medium leading-[39px] text-[#1b2330]">
                   {value}
                 </span>
-                <span className="font-inter text-[16px] leading-[19px] text-[#243244]">{label}</span>
+                <span className="font-ui text-[15px] leading-[19px] text-[#2e3a4a]">{label}</span>
               </div>
             </div>
           ))}
@@ -111,14 +131,14 @@ function WorkCard({ work, index }: { work: Work; index: number }) {
 
         <div className="mt-auto flex w-full flex-wrap items-center justify-start gap-2 lg:justify-end">
           <span
-            className={`flex h-12 items-center gap-2.5 rounded-[32px] px-4 font-inter text-[16px] font-semibold tracking-[0.01em] ${TAG_TONES[work.tag.tone]}`}
+            className={`flex h-12 items-center gap-2.5 rounded-[32px] px-4 font-ui text-[15px] ${TAG_TONES[work.tag.tone]}`}
           >
             {work.tag.star && <img src="/Star.svg" alt="" width={16} height={16} className="shrink-0" />}
             {work.tag.label}
           </span>
           <Link
             href={work.href}
-            className="group/btn relative z-20 flex h-12 items-center gap-2 rounded-[12px] bg-[#FFDED3] px-6 font-inter text-[16px] font-semibold tracking-[0.01em] text-[#980D01] transition-colors duration-300 hover:bg-[#990C02] hover:text-white"
+            className="group/btn relative z-20 flex h-12 items-center gap-2 rounded-[12px] bg-[#1b2330] px-6 font-ui text-[16px] text-white transition-colors duration-300 hover:bg-[#2a3444]"
           >
             Know More
             <svg aria-hidden width="14" height="14" viewBox="0 0 14 14" fill="none" className="transition-transform duration-300 group-hover/btn:translate-x-[2px]">

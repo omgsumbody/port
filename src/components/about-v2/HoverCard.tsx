@@ -33,7 +33,7 @@ export default function HoverCard({ children, href, title, meta, body, logo }: P
       <span
         id={id}
         role="tooltip"
-        className="pointer-events-none absolute top-full left-0 z-30 mt-2 flex w-[300px] translate-y-1 flex-col gap-2 rounded-[14px] border border-[#E6E3DC] bg-white p-4 text-left opacity-0 shadow-[0_10px_30px_rgba(27,35,48,0.12)] transition-[opacity,transform] duration-200 group-focus-within/card:translate-y-0 group-focus-within/card:opacity-100 group-hover/card:translate-y-0 group-hover/card:opacity-100"
+        className="hovercard pointer-events-none absolute whitespace-normal [text-align-last:auto] top-full left-0 z-30 mt-2 flex w-[300px] translate-y-1 flex-col gap-2 rounded-[14px] border border-[#E6E3DC] bg-white p-4 text-left opacity-0 shadow-[0_10px_30px_rgba(27,35,48,0.12)] transition-[opacity,transform] duration-200 group-focus-within/card:translate-y-0 group-focus-within/card:opacity-100 group-hover/card:translate-y-0 group-hover/card:opacity-100"
       >
         <span className="flex items-center gap-3">
           {logo && <img src={logo} alt="" width={40} height={40} className="h-10 w-10 shrink-0 rounded-[10px] object-cover" />}
