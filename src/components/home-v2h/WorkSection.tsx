@@ -1,15 +1,22 @@
 "use client";
 
-import Link from "next/link";
-import { useRef, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
+import dynamic from "next/dynamic";
+import { useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
+import { AnimatePresence } from "framer-motion";
 import WorkCameos from "./WorkCameos";
+
+// The expanded project summaries from the first home page, loaded on first open.
+const CardExpandModal = dynamic(() => import("@/components/CardExpandModal"), { ssr: false });
+const MavenExpandModal = dynamic(() => import("@/components/MavenExpandModal"), { ssr: false });
+
+type ModalId = "review-settings" | "maven";
 
 type Work = {
   title: string;
   description: string;
   stats: [string, string][];
   tag: { label: string; tone: "gold" | "blue"; star?: boolean };
-  href: string;
+  modal: ModalId; // Know More opens this summary; the full case study is linked from inside it
   video?: string;
 };
 
@@ -22,7 +29,7 @@ const WORK: Work[] = [
       ["8%", "more review cycles created."],
     ],
     tag: { label: "Most Popular", tone: "gold", star: true },
-    href: "/review-settings",
+    modal: "review-settings",
     video: "https://res.cloudinary.com/des7zr831/video/upload/v1780566788/Video_Project_9_mpw1np.mp4",
   },
   {
@@ -33,7 +40,7 @@ const WORK: Work[] = [
       ["215%", "better qualitative feedback."],
     ],
     tag: { label: "Snapshot · 3 min", tone: "blue" },
-    href: "/mesh-ai",
+    modal: "maven",
   },
 ];
 
@@ -67,7 +74,7 @@ const trackPointer = (e: ReactPointerEvent<HTMLElement>) => {
   e.currentTarget.style.setProperty("--mouse-y", `${e.clientY - r.top}px`);
 };
 
-function WorkCard({ work, index }: { work: Work; index: number }) {
+function WorkCard({ work, index, onOpen }: { work: Work; index: number; onOpen: (modal: ModalId) => void }) {
   return (
     <article
       data-cameo={`card-${index + 1}`}
@@ -136,15 +143,16 @@ function WorkCard({ work, index }: { work: Work; index: number }) {
             {work.tag.star && <img src="/Star.svg" alt="" width={16} height={16} className="shrink-0" />}
             {work.tag.label}
           </span>
-          <Link
-            href={work.href}
-            className="group/btn relative z-20 flex h-12 items-center gap-2 rounded-[12px] bg-[#1b2330] px-6 font-ui text-[16px] text-white transition-colors duration-300 hover:bg-[#2a3444]"
+          <button
+            type="button"
+            onClick={() => onOpen(work.modal)}
+            className="group/btn relative z-20 flex h-12 items-center gap-2 cursor-pointer rounded-[12px] bg-[#1b2330] px-6 font-ui text-[16px] text-white transition-colors duration-300 hover:bg-[#2a3444]"
           >
             Know More
             <svg aria-hidden width="14" height="14" viewBox="0 0 14 14" fill="none" className="transition-transform duration-300 group-hover/btn:translate-x-[2px]">
               <path d="M5 3L9 7L5 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </Link>
+          </button>
         </div>
       </div>
     </article>
@@ -154,6 +162,8 @@ function WorkCard({ work, index }: { work: Work; index: number }) {
 /** Selected work: the two case studies, stacked, in the home page card style. */
 export default function WorkSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [openModal, setOpenModal] = useState<ModalId | null>(null);
+  const close = () => setOpenModal(null);
   return (
     <section
       ref={sectionRef}
@@ -169,10 +179,24 @@ export default function WorkSection() {
           </h2>
         </div>
         {WORK.map((work, i) => (
-          <WorkCard key={work.title} work={work} index={i} />
+          <WorkCard key={work.title} work={work} index={i} onOpen={setOpenModal} />
         ))}
       </div>
       <WorkCameos sectionRef={sectionRef} />
+      <AnimatePresence>
+        {openModal === "review-settings" && (
+          <CardExpandModal
+            isOpen
+            onClose={close}
+            cardIndex={0}
+            cardInfo={{
+              title: "Empowering HR with Scalable, Modular Performance Settings",
+              body: "Replacing a rigid 12-step maze with a bifurcated architecture empowers HR to independently launch customized, scalable performance reviews in minutes without support.",
+            }}
+          />
+        )}
+        {openModal === "maven" && <MavenExpandModal isOpen onClose={close} cardIndex={2} />}
+      </AnimatePresence>
     </section>
   );
 }
