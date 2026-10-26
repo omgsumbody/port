@@ -14,9 +14,13 @@ interface CardExpandModalProps {
         title: string;
         body: string;
     };
+    // For an opener that animates its own way in: "none" mounts the panel already in place,
+    // and `revealed` keeps the whole modal invisible (but measurable) until the opener is ready.
+    enter?: "rise" | "none";
+    revealed?: boolean;
 }
 
-export default function CardExpandModal({ isOpen, onClose, cardIndex, cardInfo }: CardExpandModalProps) {
+export default function CardExpandModal({ isOpen, onClose, cardIndex, cardInfo, enter = "rise", revealed = true }: CardExpandModalProps) {
     const router = useRouter();
 
     const handleNavigate = () => {
@@ -45,14 +49,16 @@ export default function CardExpandModal({ isOpen, onClose, cardIndex, cardInfo }
     return (
         <div
             onClick={onClose}
+            style={revealed ? undefined : { opacity: 0, pointerEvents: "none" }}
             className="fixed inset-0 z-[100] overflow-y-auto backdrop-blur-sm pt-[138px] pb-[138px] flex justify-center px-8 bg-[url('/assets/Landing/cards%20exp/modalbg.svg')] bg-cover bg-center bg-fixed"
         >
             {/* Modal Container */}
             <motion.div
+                data-modal-panel
                 onClick={(e) => e.stopPropagation()}
-                initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                initial={enter === "none" ? false : { opacity: 0, y: 50, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 20, scale: 0.95 }}
+                exit={enter === "none" ? { opacity: 0, transition: { duration: 0 } } : { opacity: 0, y: 20, scale: 0.95 }}
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }} // smooth spring-like curve
                 className="relative w-full max-w-[1486px] bg-white rounded-[24px] border border-grey-00 shadow-[0px_8px_24px_rgba(0,0,0,0.12)] p-[48px] h-fit mx-auto"
             >

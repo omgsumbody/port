@@ -161,3 +161,10 @@
     scrollbar-width: none;  /* Firefox */
   }
 }
+/* How far the work cartridge stands off its rest: up when lifted, negative when pressed in.
+   Registered so it can be transitioned. */
+@property --lift {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
